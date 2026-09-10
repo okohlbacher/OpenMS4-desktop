@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "dependencies": {
+    "OpenMS": {
+      "version": "4.0.0",
+      "source_revision": "7c029e8cdba6abab503708ecdd56f6ab55e38ce4",
+      "repository": "https://github.com/okohlbacher/OpenMS4-core"
+    },
+    "OpenMSCLI": {
+      "version": "1.0.0",
+      "source_revision": "df96bea519382352b0bd840cb1f8b73811ce97bf",
+      "repository": "https://github.com/okohlbacher/OpenMS4-cli"
+    },
+    "OpenMSTestData": {
+      "version": "1.0.0",
+      "source_revision": "e1ccfcb4ef91ba756c58135e6c92db656822616d",
+      "repository": "https://github.com/okohlbacher/OpenMS4-test-data"
+    }
+  },
+  "binary_artifacts": "Not built; exact source pins are not a binary ABI guarantee."
+}

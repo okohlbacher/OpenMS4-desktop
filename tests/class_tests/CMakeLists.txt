@@ -1,0 +1,26 @@
+# Tests compile against the installed core's optional TestSupport component.
+if(NOT TARGET OpenMS::TestFramework OR NOT EXISTS "${OpenMS_TEST_SUPPORT_SOURCE}")
+  message(FATAL_ERROR "GUI tests require the core SDK TestSupport component and OpenMS_TEST_SUPPORT_SOURCE")
+endif()
+set(_class_tests Annotation1DPeakItem_test AxisTickCalculator_test
+  FileWatcher_test GUIHelpers_test MultiGradient_test)
+foreach(_test IN LISTS _class_tests)
+  add_executable(${_test} "source/${_test}.cpp" "${OpenMS_TEST_SUPPORT_SOURCE}")
+  target_link_libraries(${_test} PRIVATE OpenMS::GUI OpenMS::Core OpenMS::TestFramework)
+  target_compile_features(${_test} PRIVATE cxx_std_23)
+  add_test(NAME ${_test} COMMAND ${_test})
+endforeach()
+option(OPENMS_DESKTOP_INTERACTIVE_TESTS "Run Qt interaction tests with a display" OFF)
+if(OPENMS_DESKTOP_INTERACTIVE_TESTS)
+  find_package(Qt6 6.1 REQUIRED COMPONENTS Test)
+  foreach(_test TOPPView_test TSGDialog_test)
+    add_executable(${_test} "source/GUI/${_test}.cpp"
+      "include/GUI/${_test}.h" "${OpenMS_TEST_SUPPORT_SOURCE}")
+    set_target_properties(${_test} PROPERTIES AUTOMOC ON)
+    target_include_directories(${_test} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include/GUI")
+    target_link_libraries(${_test} PRIVATE OpenMS::GUI OpenMS::Core OpenMS::TestFramework Qt6::Test)
+    # TSGDialog_test.h reads an internal UIC-generated type from this GUI build.
+    add_dependencies(${_test} OpenMS_GUI_autogen)
+    add_test(NAME ${_test} COMMAND ${_test})
+  endforeach()
+endif()

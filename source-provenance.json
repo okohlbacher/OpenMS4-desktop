@@ -1,0 +1,2009 @@
+{
+  "upstream": "https://github.com/OpenMS/OpenMS",
+  "commit": "ca32296038839459d8c9b075b759e285913d6294",
+  "package": "desktop",
+  "imported_files": [
+    {
+      "upstream": "src/openms_gui/CMakeLists.txt",
+      "package": "desktop",
+      "path": "gui/CMakeLists.txt"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/ANNOTATION/Annotation1DCaret.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/ANNOTATION/Annotation1DCaret.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/ANNOTATION/Annotation1DDistanceItem.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/ANNOTATION/Annotation1DDistanceItem.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/ANNOTATION/Annotation1DItem.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/ANNOTATION/Annotation1DItem.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/ANNOTATION/Annotation1DPeakItem.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/ANNOTATION/Annotation1DPeakItem.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/ANNOTATION/Annotation1DTextItem.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/ANNOTATION/Annotation1DTextItem.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/ANNOTATION/Annotation1DVerticalLineItem.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/ANNOTATION/Annotation1DVerticalLineItem.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/ANNOTATION/Annotations1DContainer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/ANNOTATION/Annotations1DContainer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/ANNOTATION/sources.cmake",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/ANNOTATION/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/APPLICATIONS/INIFileEditorWindow.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/APPLICATIONS/INIFileEditorWindow.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/APPLICATIONS/MISC/QApplicationTOPP.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/APPLICATIONS/MISC/QApplicationTOPP.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/APPLICATIONS/MISC/sources.cmake",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/APPLICATIONS/MISC/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/APPLICATIONS/TOPPASBase.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/APPLICATIONS/TOPPASBase.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/APPLICATIONS/TOPPViewBase.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/APPLICATIONS/TOPPViewBase.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/APPLICATIONS/sources.cmake",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/APPLICATIONS/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/AxisPainter.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/AxisPainter.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/AxisTickCalculator.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/AxisTickCalculator.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/AxisWidget.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/AxisWidget.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/ColorSelector.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/ColorSelector.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/DataFilterDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/DataFilterDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/FeatureEditDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/FeatureEditDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/HistogramDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/HistogramDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/LayerStatisticsDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/LayerStatisticsDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/ListFilterDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/ListFilterDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/Plot1DGoToDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/Plot1DGoToDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/Plot1DPrefDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/Plot1DPrefDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/Plot2DGoToDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/Plot2DGoToDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/Plot2DPrefDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/Plot2DPrefDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/Plot3DPrefDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/Plot3DPrefDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/SaveImageDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/SaveImageDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/SpectrumAlignmentDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/SpectrumAlignmentDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/TOPPASIOMappingDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/TOPPASIOMappingDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/TOPPASInputFileDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/TOPPASInputFileDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/TOPPASInputFilesDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/TOPPASInputFilesDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/TOPPASOutputFilesDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/TOPPASOutputFilesDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/TOPPASToolConfigDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/TOPPASToolConfigDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/TOPPASVertexNameDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/TOPPASVertexNameDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/TOPPViewOpenDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/TOPPViewOpenDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/TOPPViewPrefDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/TOPPViewPrefDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/TheoreticalSpectrumGenerationDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/TheoreticalSpectrumGenerationDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/ToolsDialog.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/ToolsDialog.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIALOGS/sources.cmake",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIALOGS/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DIATreeTab.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DIATreeTab.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/DataSelectionTabs.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/DataSelectionTabs.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/EnhancedTabBar.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/EnhancedTabBar.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/EnhancedTabBarWidgetInterface.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/EnhancedTabBarWidgetInterface.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/EnhancedWorkspace.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/EnhancedWorkspace.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/FileWatcher.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/FileWatcher.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/FilterList.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/FilterList.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/GUIProgressLoggerImpl.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/GUIProgressLoggerImpl.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/HistogramWidget.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/HistogramWidget.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/INTERFACES/IPeptideIds.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/INTERFACES/IPeptideIds.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/INTERFACES/sources.cmake",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/INTERFACES/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/InputFile.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/InputFile.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/InputFileList.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/InputFileList.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/LayerData1DBase.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/LayerData1DBase.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/LayerData1DChrom.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/LayerData1DChrom.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/LayerData1DIonMobility.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/LayerData1DIonMobility.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/LayerData1DPeak.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/LayerData1DPeak.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/LayerDataBase.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/LayerDataBase.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/LayerDataChrom.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/LayerDataChrom.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/LayerDataConsensus.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/LayerDataConsensus.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/LayerDataFeature.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/LayerDataFeature.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/LayerDataIdent.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/LayerDataIdent.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/LayerDataIonMobility.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/LayerDataIonMobility.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/LayerDataPeak.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/LayerDataPeak.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/LayerListView.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/LayerListView.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/ListEditor.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/ListEditor.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/LogWindow.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/LogWindow.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/MISC/CommonDefs.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/MISC/CommonDefs.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/MISC/ExternalProcessMBox.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/MISC/ExternalProcessMBox.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/MISC/FilterableList.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/MISC/FilterableList.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/MISC/GUIHelpers.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/MISC/GUIHelpers.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/MISC/InteractiveSplashScreen.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/MISC/InteractiveSplashScreen.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/MISC/Qt5Port.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/MISC/Qt5Port.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/MISC/sources.cmake",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/MISC/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/MetaDataBrowser.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/MetaDataBrowser.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/MultiGradient.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/MultiGradient.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/MultiGradientSelector.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/MultiGradientSelector.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/OutputDirectory.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/OutputDirectory.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/Painter1DBase.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/Painter1DBase.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/Painter2DBase.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/Painter2DBase.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/PainterBase.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/PainterBase.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/ParamEditor.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/ParamEditor.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/Plot1DCanvas.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/Plot1DCanvas.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/Plot1DWidget.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/Plot1DWidget.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/Plot2DCanvas.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/Plot2DCanvas.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/Plot2DWidget.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/Plot2DWidget.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/Plot3DCanvas.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/Plot3DCanvas.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/Plot3DOpenGLCanvas.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/Plot3DOpenGLCanvas.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/Plot3DWidget.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/Plot3DWidget.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/PlotCanvas.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/PlotCanvas.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/PlotWidget.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/PlotWidget.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/RecentFilesMenu.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/RecentFilesMenu.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/SequenceVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/SequenceVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/SpectraIDViewTab.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/SpectraIDViewTab.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/SpectraTreeTab.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/SpectraTreeTab.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPASEdge.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPASEdge.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPASInputFileListVertex.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPASInputFileListVertex.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPASMergerVertex.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPASMergerVertex.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPASOutputFileListVertex.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPASOutputFileListVertex.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPASOutputFolderVertex.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPASOutputFolderVertex.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPASOutputVertex.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPASOutputVertex.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPASResource.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPASResource.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPASResources.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPASResources.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPASScene.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPASScene.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPASSplitterVertex.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPASSplitterVertex.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPASToolVertex.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPASToolVertex.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPASTreeView.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPASTreeView.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPASVertex.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPASVertex.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPASWidget.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPASWidget.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TOPPViewMenu.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TOPPViewMenu.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TVControllerBase.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TVControllerBase.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TVDIATreeTabController.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TVDIATreeTabController.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TVIdentificationViewController.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TVIdentificationViewController.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TVSpectraViewController.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TVSpectraViewController.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TVToolDiscovery.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TVToolDiscovery.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TableView.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TableView.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/TreeView.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/TreeView.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISITORS/LayerStatistics.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISITORS/LayerStatistics.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISITORS/LayerStoreData.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISITORS/LayerStoreData.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISITORS/sources.cmake",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISITORS/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/AcquisitionInfoVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/AcquisitionInfoVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/AcquisitionVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/AcquisitionVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/BaseVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/BaseVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/BaseVisualizerGUI.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/BaseVisualizerGUI.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/ContactPersonVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/ContactPersonVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/DataProcessingVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/DataProcessingVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/DocumentIdentifierVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/DocumentIdentifierVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/ExperimentalSettingsVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/ExperimentalSettingsVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/GradientVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/GradientVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/HPLCVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/HPLCVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/InstrumentSettingsVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/InstrumentSettingsVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/InstrumentVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/InstrumentVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/IonDetectorVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/IonDetectorVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/IonSourceVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/IonSourceVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/MassAnalyzerVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/MassAnalyzerVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/MetaInfoDescriptionVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/MetaInfoDescriptionVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/MetaInfoVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/MetaInfoVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/PeptideHitVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/PeptideHitVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/PeptideIdentificationVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/PeptideIdentificationVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/PrecursorVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/PrecursorVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/ProductVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/ProductVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/ProteinHitVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/ProteinHitVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/ProteinIdentificationVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/ProteinIdentificationVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/SampleVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/SampleVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/ScanWindowVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/ScanWindowVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/SoftwareVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/SoftwareVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/SourceFileVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/SourceFileVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/SpectrumSettingsVisualizer.h",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/SpectrumSettingsVisualizer.h"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/VISUALIZER/sources.cmake",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/VISUALIZER/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/include/OpenMS/VISUAL/sources.cmake",
+      "package": "desktop",
+      "path": "gui/include/OpenMS/VISUAL/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/includes.cmake",
+      "package": "desktop",
+      "path": "gui/includes.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/qt_wrap_ui.cmake",
+      "package": "desktop",
+      "path": "gui/qt_wrap_ui.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ANNOTATION/Annotation1DCaret.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ANNOTATION/Annotation1DCaret.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ANNOTATION/Annotation1DDistanceItem.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ANNOTATION/Annotation1DDistanceItem.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ANNOTATION/Annotation1DItem.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ANNOTATION/Annotation1DItem.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ANNOTATION/Annotation1DPeakItem.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ANNOTATION/Annotation1DPeakItem.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ANNOTATION/Annotation1DTextItem.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ANNOTATION/Annotation1DTextItem.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ANNOTATION/Annotation1DVerticalLineItem.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ANNOTATION/Annotation1DVerticalLineItem.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ANNOTATION/Annotations1DContainer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ANNOTATION/Annotations1DContainer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ANNOTATION/sources.cmake",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ANNOTATION/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/ExecutePipeline.cpp",
+      "package": "desktop",
+      "path": "workflows/ExecutePipeline.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/INIFileEditor-resources/INIFileEditor.icns",
+      "package": "desktop",
+      "path": "viewers/INIFileEditor-resources/INIFileEditor.icns"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/INIFileEditor-resources/INIFileEditor.plist.in",
+      "package": "desktop",
+      "path": "viewers/INIFileEditor-resources/INIFileEditor.plist.in"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/INIFileEditor.cpp",
+      "package": "desktop",
+      "path": "viewers/INIFileEditor.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/INIFileEditor.ico",
+      "package": "desktop",
+      "path": "viewers/INIFileEditor.ico"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/INIFileEditor.rc",
+      "package": "desktop",
+      "path": "viewers/INIFileEditor.rc"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/ImageCreator.cpp",
+      "package": "desktop",
+      "path": "viewers/ImageCreator.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/TOPPAS-resources/TOPPAS.icns",
+      "package": "desktop",
+      "path": "workflows/TOPPAS-resources/TOPPAS.icns"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/TOPPAS-resources/TOPPAS.plist.in",
+      "package": "desktop",
+      "path": "workflows/TOPPAS-resources/TOPPAS.plist.in"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/TOPPAS.cpp",
+      "package": "desktop",
+      "path": "workflows/TOPPAS.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/TOPPAS.ico",
+      "package": "desktop",
+      "path": "workflows/TOPPAS.ico"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/TOPPAS.rc",
+      "package": "desktop",
+      "path": "workflows/TOPPAS.rc"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/TOPPView-resources/TOPPView.icns",
+      "package": "desktop",
+      "path": "viewers/TOPPView-resources/TOPPView.icns"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/TOPPView-resources/TOPPView.plist.in",
+      "package": "desktop",
+      "path": "viewers/TOPPView-resources/TOPPView.plist.in"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/TOPPView.cpp",
+      "package": "desktop",
+      "path": "viewers/TOPPView.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/TOPPView.ico",
+      "package": "desktop",
+      "path": "viewers/TOPPView.ico"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/TOPPView.rc",
+      "package": "desktop",
+      "path": "viewers/TOPPView.rc"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/INIFileEditorWindow.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/APPLICATIONS/INIFileEditorWindow.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/MISC/QApplicationTOPP.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/APPLICATIONS/MISC/QApplicationTOPP.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/MISC/sources.cmake",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/APPLICATIONS/MISC/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/TOPPASBase.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/APPLICATIONS/TOPPASBase.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/TOPPViewBase.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/APPLICATIONS/TOPPViewBase.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/sources.cmake",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/APPLICATIONS/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/AxisPainter.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/AxisPainter.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/AxisTickCalculator.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/AxisTickCalculator.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/AxisWidget.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/AxisWidget.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ColorSelector.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ColorSelector.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/DataFilterDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/DataFilterDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/DataFilterDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/DataFilterDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/FeatureEditDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/FeatureEditDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/FeatureEditDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/FeatureEditDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/HistogramDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/HistogramDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/LayerStatisticsDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/LayerStatisticsDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/LayerStatisticsDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/LayerStatisticsDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/ListFilterDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/ListFilterDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/ListFilterDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/ListFilterDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/Plot1DGoToDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/Plot1DGoToDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/Plot1DGoToDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/Plot1DGoToDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/Plot1DPrefDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/Plot1DPrefDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/Plot1DPrefDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/Plot1DPrefDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/Plot2DGoToDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/Plot2DGoToDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/Plot2DGoToDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/Plot2DGoToDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/Plot2DPrefDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/Plot2DPrefDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/Plot2DPrefDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/Plot2DPrefDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/Plot3DPrefDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/Plot3DPrefDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/Plot3DPrefDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/Plot3DPrefDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/SaveImageDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/SaveImageDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/SpectrumAlignmentDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/SpectrumAlignmentDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/SpectrumAlignmentDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/SpectrumAlignmentDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPASIOMappingDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPASIOMappingDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPASIOMappingDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPASIOMappingDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPASInputFileDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPASInputFileDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPASInputFileDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPASInputFileDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPASInputFilesDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPASInputFilesDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPASInputFilesDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPASInputFilesDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPASOutputFilesDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPASOutputFilesDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPASOutputFilesDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPASOutputFilesDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPASToolConfigDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPASToolConfigDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPASVertexNameDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPASVertexNameDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPASVertexNameDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPASVertexNameDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPViewOpenDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPViewOpenDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPViewOpenDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPViewOpenDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPViewPrefDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPViewPrefDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TOPPViewPrefDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TOPPViewPrefDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TheoreticalSpectrumGenerationDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TheoreticalSpectrumGenerationDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/TheoreticalSpectrumGenerationDialog.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/TheoreticalSpectrumGenerationDialog.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/ToolsDialog.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/ToolsDialog.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIALOGS/sources.cmake",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIALOGS/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DIATreeTab.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DIATreeTab.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/DataSelectionTabs.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/DataSelectionTabs.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/EnhancedTabBar.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/EnhancedTabBar.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/EnhancedTabBarWidgetInterface.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/EnhancedTabBarWidgetInterface.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/EnhancedWorkspace.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/EnhancedWorkspace.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/FileWatcher.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/FileWatcher.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/FilterList.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/FilterList.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/FilterList.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/FilterList.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/GUIProgressLoggerImpl.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/GUIProgressLoggerImpl.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/HistogramWidget.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/HistogramWidget.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/INIFileEditor.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/INIFileEditor.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/Recycling_symbol.svg",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/Recycling_symbol.svg"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/TOPPAS.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/TOPPAS.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/TOPPAS_Splashscreen.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/TOPPAS_Splashscreen.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/TOPPView.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/TOPPView.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/TOPPView_Splashscreen.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/TOPPView_Splashscreen.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/TOPP_about.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/TOPP_about.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/convexhull.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/convexhull.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/convexhulls.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/convexhulls.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/cursor_measure.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/cursor_measure.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/cursor_move.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/cursor_move.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/cursor_zoom.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/cursor_zoom.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/elements.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/elements.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/labels.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/labels.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/lin.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/lin.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/lines.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/lines.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/log.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/log.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/peaks.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/peaks.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/peptidemz.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/peptidemz.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/percentage.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/percentage.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/precursors.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/precursors.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/projections.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/projections.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/reset_zoom.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/reset_zoom.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/resources.qrc",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/resources.qrc"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/sequence_viz.html",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/sequence_viz.html"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/snap.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/snap.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/stop_sign.svg",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/stop_sign.svg"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/tile_horizontal.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/tile_horizontal.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/tile_vertical.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/tile_vertical.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ICONS/unassigned.png",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/unassigned.png"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/INTERFACES/IPeptideIds.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/INTERFACES/IPeptideIds.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/INTERFACES/sources.cmake",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/INTERFACES/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/InputFile.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/InputFile.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/InputFile.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/InputFile.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/InputFileList.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/InputFileList.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/InputFileList.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/InputFileList.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/LayerData1DBase.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/LayerData1DBase.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/LayerData1DChrom.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/LayerData1DChrom.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/LayerData1DIonMobility.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/LayerData1DIonMobility.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/LayerData1DPeak.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/LayerData1DPeak.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/LayerDataBase.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/LayerDataBase.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/LayerDataChrom.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/LayerDataChrom.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/LayerDataConsensus.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/LayerDataConsensus.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/LayerDataFeature.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/LayerDataFeature.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/LayerDataIdent.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/LayerDataIdent.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/LayerDataIonMobility.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/LayerDataIonMobility.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/LayerDataPeak.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/LayerDataPeak.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/LayerListView.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/LayerListView.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ListEditor.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ListEditor.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/LogWindow.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/LogWindow.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/MISC/CommonDefs.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/MISC/CommonDefs.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/MISC/ExternalProcessMBox.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/MISC/ExternalProcessMBox.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/MISC/FilterableList.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/MISC/FilterableList.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/MISC/FilterableList.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/MISC/FilterableList.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/MISC/GUIHelpers.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/MISC/GUIHelpers.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/MISC/InteractiveSplashScreen.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/MISC/InteractiveSplashScreen.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/MISC/sources.cmake",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/MISC/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/MetaDataBrowser.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/MetaDataBrowser.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/MultiGradient.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/MultiGradient.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/MultiGradientSelector.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/MultiGradientSelector.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/OutputDirectory.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/OutputDirectory.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/OutputDirectory.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/OutputDirectory.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/Painter1DBase.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/Painter1DBase.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/Painter2DBase.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/Painter2DBase.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/PainterBase.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/PainterBase.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ParamEditor.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ParamEditor.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/ParamEditor.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ParamEditor.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/Plot1DCanvas.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/Plot1DCanvas.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/Plot1DWidget.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/Plot1DWidget.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/Plot2DCanvas.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/Plot2DCanvas.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/Plot2DWidget.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/Plot2DWidget.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/Plot3DCanvas.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/Plot3DCanvas.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/Plot3DOpenGLCanvas.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/Plot3DOpenGLCanvas.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/Plot3DWidget.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/Plot3DWidget.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/PlotCanvas.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/PlotCanvas.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/PlotWidget.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/PlotWidget.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/RecentFilesMenu.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/RecentFilesMenu.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/SequenceVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/SequenceVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/SequenceVisualizer.ui",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/SequenceVisualizer.ui"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/SpectraIDViewTab.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/SpectraIDViewTab.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/SpectraTreeTab.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/SpectraTreeTab.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPASEdge.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPASEdge.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPASInputFileListVertex.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPASInputFileListVertex.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPASMergerVertex.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPASMergerVertex.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPASOutputFileListVertex.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPASOutputFileListVertex.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPASOutputFolderVertex.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPASOutputFolderVertex.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPASOutputVertex.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPASOutputVertex.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPASResource.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPASResource.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPASResources.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPASResources.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPASScene.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPASScene.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPASSplitterVertex.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPASSplitterVertex.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPASToolVertex.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPASToolVertex.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPASTreeView.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPASTreeView.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPASVertex.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPASVertex.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPASWidget.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPASWidget.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TOPPViewMenu.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TOPPViewMenu.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TVControllerBase.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TVControllerBase.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TVDIATreeTabController.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TVDIATreeTabController.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TVIdentificationViewController.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TVIdentificationViewController.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TVSpectraViewController.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TVSpectraViewController.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TVToolDiscovery.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TVToolDiscovery.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TableView.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TableView.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/TreeView.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/TreeView.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISITORS/LayerStatistics.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISITORS/LayerStatistics.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISITORS/LayerStoreData.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISITORS/LayerStoreData.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISITORS/sources.cmake",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISITORS/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/AcquisitionInfoVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/AcquisitionInfoVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/AcquisitionVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/AcquisitionVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/BaseVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/BaseVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/BaseVisualizerGUI.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/BaseVisualizerGUI.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/ContactPersonVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/ContactPersonVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/DataProcessingVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/DataProcessingVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/DocumentIdentifierVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/DocumentIdentifierVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/ExperimentalSettingsVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/ExperimentalSettingsVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/GradientVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/GradientVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/HPLCVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/HPLCVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/InstrumentSettingsVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/InstrumentSettingsVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/InstrumentVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/InstrumentVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/IonDetectorVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/IonDetectorVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/IonSourceVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/IonSourceVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/MassAnalyzerVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/MassAnalyzerVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/MetaInfoDescriptionVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/MetaInfoDescriptionVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/MetaInfoVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/MetaInfoVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/PeptideHitVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/PeptideHitVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/PeptideIdentificationVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/PeptideIdentificationVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/PrecursorVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/PrecursorVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/ProductVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/ProductVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/ProteinHitVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/ProteinHitVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/ProteinIdentificationVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/ProteinIdentificationVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/SampleVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/SampleVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/ScanWindowVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/ScanWindowVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/SoftwareVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/SoftwareVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/SourceFileVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/SourceFileVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/SpectrumSettingsVisualizer.cpp",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/SpectrumSettingsVisualizer.cpp"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/VISUALIZER/sources.cmake",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/VISUALIZER/sources.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/sources.cmake",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/sources.cmake"
+    },
+    {
+      "upstream": "src/tests/class_tests/openms_gui/CMakeLists.txt",
+      "package": "desktop",
+      "path": "tests/class_tests/CMakeLists.txt"
+    },
+    {
+      "upstream": "src/tests/class_tests/openms_gui/include/GUI/TOPPView_test.h",
+      "package": "desktop",
+      "path": "tests/class_tests/include/GUI/TOPPView_test.h"
+    },
+    {
+      "upstream": "src/tests/class_tests/openms_gui/include/GUI/TSGDialog_test.h",
+      "package": "desktop",
+      "path": "tests/class_tests/include/GUI/TSGDialog_test.h"
+    },
+    {
+      "upstream": "src/tests/class_tests/openms_gui/source/Annotation1DPeakItem_test.cpp",
+      "package": "desktop",
+      "path": "tests/class_tests/source/Annotation1DPeakItem_test.cpp"
+    },
+    {
+      "upstream": "src/tests/class_tests/openms_gui/source/AxisTickCalculator_test.cpp",
+      "package": "desktop",
+      "path": "tests/class_tests/source/AxisTickCalculator_test.cpp"
+    },
+    {
+      "upstream": "src/tests/class_tests/openms_gui/source/FileWatcher_test.cpp",
+      "package": "desktop",
+      "path": "tests/class_tests/source/FileWatcher_test.cpp"
+    },
+    {
+      "upstream": "src/tests/class_tests/openms_gui/source/GUI/TOPPView_test.cpp",
+      "package": "desktop",
+      "path": "tests/class_tests/source/GUI/TOPPView_test.cpp"
+    },
+    {
+      "upstream": "src/tests/class_tests/openms_gui/source/GUI/TSGDialog_test.cpp",
+      "package": "desktop",
+      "path": "tests/class_tests/source/GUI/TSGDialog_test.cpp"
+    },
+    {
+      "upstream": "src/tests/class_tests/openms_gui/source/GUIHelpers_test.cpp",
+      "package": "desktop",
+      "path": "tests/class_tests/source/GUIHelpers_test.cpp"
+    },
+    {
+      "upstream": "src/tests/class_tests/openms_gui/source/MultiGradient_test.cpp",
+      "package": "desktop",
+      "path": "tests/class_tests/source/MultiGradient_test.cpp"
+    },
+    {
+      "upstream": "src/tests/toppas/CMakeLists.txt",
+      "package": "desktop",
+      "path": "tests/pipelines/CMakeLists.txt"
+    },
+    {
+      "upstream": "src/tests/toppas/ExecutePipeline_1.mzML",
+      "package": "desktop",
+      "path": "tests/pipelines/ExecutePipeline_1.mzML"
+    },
+    {
+      "upstream": "src/tests/toppas/ExecutePipeline_1.toppas",
+      "package": "desktop",
+      "path": "tests/pipelines/ExecutePipeline_1.toppas"
+    },
+    {
+      "upstream": "src/tests/toppas/ExecutePipeline_1.trf.in",
+      "package": "desktop",
+      "path": "tests/pipelines/ExecutePipeline_1.trf.in"
+    },
+    {
+      "upstream": "src/tests/toppas/ExecutePipeline_2.mzML",
+      "package": "desktop",
+      "path": "tests/pipelines/ExecutePipeline_2.mzML"
+    },
+    {
+      "upstream": "License.txt",
+      "package": "desktop",
+      "path": "License.txt"
+    },
+    {
+      "upstream": "AUTHORS",
+      "package": "desktop",
+      "path": "AUTHORS"
+    },
+    {
+      "upstream": ".clang-format",
+      "package": "desktop",
+      "path": ".clang-format"
+    },
+    {
+      "upstream": "src/tests/topp/ImageCreator_1_input.mzML",
+      "package": "desktop",
+      "path": "tests/imagecreator/ImageCreator_1_input.mzML"
+    },
+    {
+      "upstream": "src/tests/topp/ImageCreator_1_output.bmp",
+      "package": "desktop",
+      "path": "tests/imagecreator/ImageCreator_1_output.bmp"
+    },
+    {
+      "upstream": "src/tests/topp/ImageCreator_2_input.mzML",
+      "package": "desktop",
+      "path": "tests/imagecreator/ImageCreator_2_input.mzML"
+    },
+    {
+      "upstream": "src/tests/topp/ImageCreator_2_output.bmp",
+      "package": "desktop",
+      "path": "tests/imagecreator/ImageCreator_2_output.bmp"
+    }
+  ],
+  "replaced_build_files": [
+    {
+      "upstream": "src/openms_gui/add_mac_bundle.cmake",
+      "package": "desktop",
+      "path": "gui/add_mac_bundle.cmake"
+    },
+    {
+      "upstream": "src/openms_gui/source/VISUAL/APPLICATIONS/GUITOOLS/executables.cmake",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/APPLICATIONS/GUITOOLS/executables.cmake"
+    }
+  ]
+}
