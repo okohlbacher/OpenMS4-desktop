@@ -2,7 +2,7 @@
 include_guard(GLOBAL)
 include("${CMAKE_CURRENT_LIST_DIR}/OpenMS4Dependencies.cmake")
 include(GNUInstallDirs)
-set(OPENMS4_DEPENDENCY_LOCK_FILE "${CMAKE_CURRENT_LIST_DIR}/../dependencies.lock.json")
+cmake_path(SET OPENMS4_DEPENDENCY_LOCK_FILE NORMALIZE "${CMAKE_CURRENT_LIST_DIR}/../dependencies.lock.json")
 
 # A viewer/workflow build from this repository consumes the GUI SDK from the
 # same desktop revision. Keeping this out of dependencies.lock.json avoids a

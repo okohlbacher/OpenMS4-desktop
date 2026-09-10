@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.24)
 project(OpenMSViewers VERSION 1.0.0 LANGUAGES CXX)
 include(CTest)
-set(OPENMS4_DEPENDENCY_LOCK_FILE "${CMAKE_CURRENT_LIST_DIR}/../dependencies.lock.json")
+cmake_path(SET OPENMS4_DEPENDENCY_LOCK_FILE NORMALIZE "${CMAKE_CURRENT_LIST_DIR}/../dependencies.lock.json")
 include("${CMAKE_CURRENT_LIST_DIR}/../cmake/DesktopApplications.cmake")
 openms4_find_core()
 openms4_find_package(OpenMSCLI)
