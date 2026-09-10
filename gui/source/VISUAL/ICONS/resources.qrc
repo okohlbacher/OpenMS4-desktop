@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
+        <file alias="GUISTYLE/qtStyleSheet.qss">qtStyleSheet.qss</file>
         <file>INIFileEditor.png</file>
         <file>Recycling_symbol.svg</file>
         <file>TOPPAS.png</file>

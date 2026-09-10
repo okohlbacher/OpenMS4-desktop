@@ -16,7 +16,9 @@ Each entry point accepts installed dependencies through `CMAKE_PREFIX_PATH`.
 The repository dependency lock fixes the exact core and CLI versions and source
 revisions. A standalone viewer or workflow build additionally verifies that its
 installed GUI SDK comes from this desktop repository's current commit. Source
-archives must supply `OPENMS4_SOURCE_REVISION`.
+archives must explicitly supply `OPENMS4_SOURCE_REVISION` and
+`OPENMS4_SOURCE_DIRTY=ON/OFF`. `OPENMS4_REQUIRE_CLEAN_SOURCE=ON` requires clean
+package and SDK sources; pre-build checks reject stale recorded source identity.
 
 ## Transitional GUI boundary
 
@@ -46,11 +48,11 @@ prefixes. Interactive programs use DesktopViewer/DesktopWorkflow categories,
 so CLI tool-parameter discovery can omit them while still resolving their
 executables. ImageCreator and ExecutePipeline remain discoverable CLI tools.
 
-Core data remains a compatibility dependency: GUI startup reads
-`GUISTYLE/qtStyleSheet.qss`, example menus use core examples, and documentation
-lookup uses the core's data/doc paths. Required data must accompany the pinned
-core runtime. Qt resource icons and sequence-view HTML are compiled into the
-GUI library. This repository does not duplicate the core data bundle.
+The stylesheet, Qt icons and sequence-view HTML are compiled into the GUI
+library's resource archive. Desktop startup therefore locates its own style
+without consulting Core data. Linux desktop/application metadata is installed
+by its owning viewer or workflow product. Scientific data, example menus and
+documentation lookup still use the pinned Core's data/doc paths.
 
 macOS app icons/plists and Windows icons/resources are preserved. Installs
 provide the GUI library and product binaries/bundles; automated collection of
@@ -82,3 +84,26 @@ unavailable, independently build both products against that installed SDK, run
 the class/GUI/pipeline tests, and verify discovery across separate installation
 prefixes. No binary correctness or installer readiness is claimed by the source
 checks.
+
+## Native developer build
+
+Configure each entry point in a separate build directory using the same Debug
+compiler/dependency profile as the installed Core and CLI SDKs. For example, from
+this checkout with `OPENMS_SDK_PREFIX` pointing to that shared installation:
+
+```bash
+cmake -S gui -B build-gui -G Ninja -DCMAKE_BUILD_TYPE=Debug \
+  -DCMAKE_PREFIX_PATH="$OPENMS_SDK_PREFIX" -DCMAKE_INSTALL_PREFIX="$OPENMS_SDK_PREFIX" \
+  -DOPENMS_GUI_WEBENGINE=OFF -DOPENMS4_REQUIRE_CLEAN_SOURCE=ON -DBUILD_TESTING=ON
+cmake --build build-gui --parallel 3
+QT_QPA_PLATFORM=offscreen ctest --test-dir build-gui --output-on-failure
+cmake --install build-gui
+```
+
+Use out-of-tree build directories outside the Git checkout when requiring clean
+sources. Repeat with `-S viewers` or `-S workflows` and a new build directory after
+installing GUI. The installed GUI must match this checkout's commit. Provide the
+same native dependency prefixes/curl discovery flags used for Core when necessary.
+Current native results and remaining platform/product gates are recorded in the
+superproject implementation validation report; the commands alone do not establish
+acceptance. Optional WebEngine and interactive tests need their own runs.

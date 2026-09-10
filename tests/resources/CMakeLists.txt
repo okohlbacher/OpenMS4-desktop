@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.24)
+project(DesktopResourceTest LANGUAGES CXX)
+include(CTest)
+find_package(Qt6 6.1 REQUIRED COMPONENTS Core)
+qt_add_resources(resources ../../gui/source/VISUAL/ICONS/resources.qrc)
+add_executable(DesktopResourceTest main.cpp ${resources})
+target_link_libraries(DesktopResourceTest PRIVATE Qt6::Core)
+add_test(NAME EmbeddedDesktopStyle COMMAND DesktopResourceTest)

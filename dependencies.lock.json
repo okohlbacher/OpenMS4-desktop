@@ -3,19 +3,19 @@
   "dependencies": {
     "OpenMS": {
       "version": "4.0.0",
-      "source_revision": "21b295c9ad889b402db1e3a20f13e8d08330b61b",
+      "source_revision": "4fdec46b205459b92e7d3b9e56df5d8e912d5c85",
       "repository": "https://github.com/okohlbacher/OpenMS4-core"
     },
     "OpenMSCLI": {
       "version": "1.0.0",
-      "source_revision": "a93fa142c0e51eec616e16cb91d41fa743a42ed3",
+      "source_revision": "51db6bbbdeba53abc57d23c664de37f9c285372e",
       "repository": "https://github.com/okohlbacher/OpenMS4-cli"
     },
     "OpenMSTestData": {
       "version": "1.0.0",
-      "source_revision": "a030e39ab7ef4ee8df73ea9aa83c550169919f6f",
+      "source_revision": "c3e52c917bc2a04e27720f5c7d8189c0f4f522da",
       "repository": "https://github.com/okohlbacher/OpenMS4-test-data"
     }
   },
-  "binary_artifacts": "Not built; exact source pins are not a binary ABI guarantee."
+  "binary_artifacts": "Source pins and clean build metadata are enforced; see the parent implementation validation report for tested binary profiles."
 }

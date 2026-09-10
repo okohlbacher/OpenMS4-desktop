@@ -28,12 +28,22 @@ function(openms_desktop_application name)
     add_executable(${name} "${_source}")
     set(_relative_path "${CMAKE_INSTALL_BINDIR}/${name}${CMAKE_EXECUTABLE_SUFFIX}")
   endif()
+  openms4_install_rpath(${name})
   target_compile_features(${name} PRIVATE cxx_std_23)
   target_link_libraries(${name} PRIVATE OpenMS::GUI OpenMS::CLI OpenMS::Core)
   set_target_properties(${name} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/$<0:>")
   install(TARGETS ${name} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR})
+  if(UNIX AND NOT APPLE)
+    set(_metadata "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../resources/DESKTOP/${name}")
+    if(EXISTS "${_metadata}.desktop")
+      install(FILES "${_metadata}.desktop" DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
+      install(FILES "${_metadata}.appdata.xml" DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo)
+      install(FILES "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../gui/source/VISUAL/ICONS/${name}.png"
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pixmaps)
+    endif()
+  endif()
   set(${name}_MANIFEST_PATH "${_relative_path}" PARENT_SCOPE)
 endfunction()
 

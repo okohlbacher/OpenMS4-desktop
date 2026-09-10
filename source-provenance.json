@@ -1992,6 +1992,36 @@
       "upstream": "src/tests/topp/ImageCreator_2_output.bmp",
       "package": "desktop",
       "path": "tests/imagecreator/ImageCreator_2_output.bmp"
+    },
+    {
+      "upstream": "share/OpenMS/GUISTYLE/qtStyleSheet.qss",
+      "package": "desktop",
+      "path": "gui/source/VISUAL/ICONS/qtStyleSheet.qss"
+    },
+    {
+      "upstream": "share/OpenMS/DESKTOP/TOPPAS.appdata.xml",
+      "package": "desktop",
+      "path": "resources/DESKTOP/TOPPAS.appdata.xml"
+    },
+    {
+      "upstream": "share/OpenMS/DESKTOP/TOPPView.desktop",
+      "package": "desktop",
+      "path": "resources/DESKTOP/TOPPView.desktop"
+    },
+    {
+      "upstream": "share/OpenMS/DESKTOP/readme.txt",
+      "package": "desktop",
+      "path": "resources/DESKTOP/readme.txt"
+    },
+    {
+      "upstream": "share/OpenMS/DESKTOP/TOPPAS.desktop",
+      "package": "desktop",
+      "path": "resources/DESKTOP/TOPPAS.desktop"
+    },
+    {
+      "upstream": "share/OpenMS/DESKTOP/TOPPView.appdata.xml",
+      "package": "desktop",
+      "path": "resources/DESKTOP/TOPPView.appdata.xml"
     }
   ],
   "replaced_build_files": [

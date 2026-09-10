@@ -9,7 +9,7 @@ else()
   openms4_find_core()
 endif()
 openms4_find_package(OpenMSCLI)
-openms4_source_revision(OpenMSGUI_SOURCE_REVISION)
+openms4_source_revision(OpenMSGUI_SOURCE_REVISION OpenMSGUI_SOURCE_DIRTY)
 
 option(OPENMS_GUI_WEBENGINE "Enable Qt WebEngine sequence views when available" ON)
 set(_qt_components Core Gui Widgets Svg OpenGLWidgets)
@@ -31,6 +31,7 @@ list(REMOVE_DUPLICATES OpenMSVisual_sources)
 list(REMOVE_DUPLICATES OpenMSVisual_sources_h)
 add_library(OpenMS_GUI SHARED ${OpenMSVisual_sources})
 add_library(OpenMS::GUI ALIAS OpenMS_GUI)
+openms4_install_rpath(OpenMS_GUI)
 set_target_properties(OpenMS_GUI PROPERTIES
   EXPORT_NAME GUI VERSION ${PROJECT_VERSION} SOVERSION 1
   CXX_VISIBILITY_PRESET hidden VISIBILITY_INLINES_HIDDEN YES
