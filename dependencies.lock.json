@@ -3,17 +3,17 @@
   "dependencies": {
     "OpenMS": {
       "version": "4.0.0",
-      "source_revision": "7c029e8cdba6abab503708ecdd56f6ab55e38ce4",
+      "source_revision": "21b295c9ad889b402db1e3a20f13e8d08330b61b",
       "repository": "https://github.com/okohlbacher/OpenMS4-core"
     },
     "OpenMSCLI": {
       "version": "1.0.0",
-      "source_revision": "4d8ccd5d795ecea9041c91ab2b5d9647e23383ac",
+      "source_revision": "a93fa142c0e51eec616e16cb91d41fa743a42ed3",
       "repository": "https://github.com/okohlbacher/OpenMS4-cli"
     },
     "OpenMSTestData": {
       "version": "1.0.0",
-      "source_revision": "e1ccfcb4ef91ba756c58135e6c92db656822616d",
+      "source_revision": "a030e39ab7ef4ee8df73ea9aa83c550169919f6f",
       "repository": "https://github.com/okohlbacher/OpenMS4-test-data"
     }
   },
