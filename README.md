@@ -92,12 +92,12 @@ compiler/dependency profile as the installed Core and CLI SDKs. For example, fro
 this checkout with `OPENMS_SDK_PREFIX` pointing to that shared installation:
 
 ```bash
-cmake -S gui -B build-gui -G Ninja -DCMAKE_BUILD_TYPE=Debug \
+cmake -S gui -B ../desktop-gui-build -G Ninja -DCMAKE_BUILD_TYPE=Debug \
   -DCMAKE_PREFIX_PATH="$OPENMS_SDK_PREFIX" -DCMAKE_INSTALL_PREFIX="$OPENMS_SDK_PREFIX" \
   -DOPENMS_GUI_WEBENGINE=OFF -DOPENMS4_REQUIRE_CLEAN_SOURCE=ON -DBUILD_TESTING=ON
-cmake --build build-gui --parallel 3
-QT_QPA_PLATFORM=offscreen ctest --test-dir build-gui --output-on-failure
-cmake --install build-gui
+cmake --build ../desktop-gui-build --parallel 3
+QT_QPA_PLATFORM=offscreen ctest --test-dir ../desktop-gui-build --output-on-failure
+cmake --install ../desktop-gui-build
 ```
 
 Use out-of-tree build directories outside the Git checkout when requiring clean
