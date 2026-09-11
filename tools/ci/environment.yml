@@ -1,0 +1,22 @@
+name: package-ci
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - cmake>=3.24,<4
+  - ninja
+  - pkg-config
+  - nlohmann_json=3.12.*
+  - libarrow=23.0.1
+  - libarrow-compute=23.0.1
+  - libarrow-dataset=23.0.1
+  - libparquet=23.0.1
+  - libboost-devel=1.89.0
+  - eigen=5.0.1
+  - libsvm=337
+  - xerces-c
+  - libcurl
+  - libzip
+  - libxml2-devel
+  - zlib
+  - bzip2

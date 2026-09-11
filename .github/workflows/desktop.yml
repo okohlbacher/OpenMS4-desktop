@@ -1,0 +1,109 @@
+name: Desktop
+
+on:
+  push:
+    branches: ['**']
+    paths-ignore:
+      - 'Casks/**'
+      - 'README.md'
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  native:
+    name: ${{ matrix.platform }} / Release
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: linux-x64
+            runner: ubuntu-24.04
+            packages: gcc_linux-64=14 gxx_linux-64=14 coin-or-cbc=2.10.* qt6-main=6.*
+            jobs: 4
+          - platform: linux-arm64
+            runner: ubuntu-24.04-arm
+            packages: gcc_linux-aarch64=14 gxx_linux-aarch64=14 coin-or-cbc=2.10.* qt6-main=6.*
+            jobs: 4
+          - platform: macos-arm64
+            runner: macos-15
+            packages: llvm-openmp coin-or-cbc=2.10.* qt6-main=6.*
+            jobs: 2
+          - platform: macos-x64
+            runner: macos-15-intel
+            packages: llvm-openmp coin-or-cbc=2.10.* qt6-main=6.*
+            jobs: 4
+          - platform: windows-x64
+            runner: windows-2022
+            packages: glpk=5.* qt6-main=6.*
+            jobs: 4
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PYTHONUTF8: '1'
+      OMP_NUM_THREADS: '1'
+      QT_QPA_PLATFORM: 'minimal'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          repository: okohlbacher/OpenMS4-cli
+          ref: c19e49414bcd9ebdea42f89b3f74d2823205892c
+          path: dependencies/cli
+          persist-credentials: false
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          repository: okohlbacher/OpenMS4-test-data
+          ref: 4a2d15e2fcc8915dcc1acfbea2740ce0b9a1a336
+          path: dependencies/test-data
+          persist-credentials: false
+      - uses: mamba-org/setup-micromamba@f457c30a868e4760d3a6fcea5f25dc655b8edf39 # v3
+        with:
+          environment-file: tools/ci/environment.yml
+          micromamba-version: 2.9.0-0
+          create-args: ${{ matrix.packages }}
+          init-shell: none
+          generate-run-shell: false
+          cache-environment: true
+          cache-environment-key: desktop-${{ matrix.platform }}
+      - name: Download and verify the pinned Core SDK
+        shell: bash
+        run: |
+          mkdir -p "${{ runner.temp }}/core"
+          gh release download core-v4.0.0-ci.1 --repo okohlbacher/OpenMS4-core \
+            --pattern "OpenMS4-core-${{ matrix.platform }}-Release-94a2b114939e.tar.gz*" \
+            --dir "${{ runner.temp }}/core"
+          cd "${{ runner.temp }}/core"
+          if command -v shasum >/dev/null; then
+            tr -d '\r' < *.sha256 | shasum -a 256 -c -
+          else
+            tr -d '\r' < *.sha256 | sha256sum -c -
+          fi
+          tar -xzf *.tar.gz
+      - name: Build, test, install, and package
+        run: >-
+          micromamba run -n package-ci python tools/ci/run.py
+          --platform ${{ matrix.platform }} --jobs ${{ matrix.jobs }}
+          --core-dir "${{ runner.temp }}/core"
+          --cli-source dependencies/cli
+          --test-data-source dependencies/test-data
+          --work-dir "${{ runner.temp }}/desktop"
+      - name: Upload tested package
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: desktop-${{ matrix.platform }}
+          path: ${{ runner.temp }}/desktop/dist/*
+          if-no-files-found: error
+          compression-level: 0
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: results-${{ matrix.platform }}
+          path: ${{ runner.temp }}/desktop/results/
+          if-no-files-found: warn
