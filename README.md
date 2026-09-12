@@ -34,7 +34,9 @@ headers remain internal to the GUI build and its tests.
 
 Qt 6.7 or newer is required, including Core, Gui, Widgets and Svg; the 3D view renders
 through QRhi (Metal, Direct3D, Vulkan or OpenGL, chosen by Qt per platform), whose
-semi-public headers come from the GuiPrivate component. No OpenGL development files are needed;
+semi-public headers come from the GuiPrivate component. This package no longer uses OpenGL
+itself; a Qt built with OpenGL support, such as conda-forge's, still needs the GL development
+files when it is configured, which is why the Linux CI rows keep them;
 macOS additionally links PrintSupport. `OPENMS_GUI_WEBENGINE=OFF` disables optional
 WebEngine views. Core/CLI and all C++ consumers must use compatible compiler,
 runtime, architecture and build configuration. Revision checks do not establish
