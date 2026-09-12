@@ -25,7 +25,7 @@ jobs:
           # Ask the API directly: 'gh run list --status success' on the runner image does not
           # match a run whose first attempt failed, which would refuse a release whose CI is green.
           run_id=$(gh api \
-            "repos/$GH_REPO/actions/workflows/desktop.yml/runs?head_sha=$revision&event=push&status=success&per_page=1" \
+            "repos/${{ github.repository }}/actions/workflows/desktop.yml/runs?head_sha=$revision&event=push&status=success&per_page=1" \
             --jq '.workflow_runs[0].id // empty')
           if [ -z "$run_id" ]; then
             echo "::error::No successful branch CI run exists for $revision"
