@@ -134,6 +134,8 @@ def main() -> None:
                    f"-DCURL_ROOT={dependency_prefix.as_posix()}",
                    "-DCMAKE_FIND_FRAMEWORK=LAST"]
     run("driver-tests", [sys.executable, "-m", "unittest", "discover", "-s", "tools/ci", "-v"])
+    run("source-boundaries", [sys.executable, "-m", "unittest", "discover", "-s", "tests",
+                              "-p", "test_source_boundaries.py", "-v"])
     run("configure-cli", ["cmake", "-S", str(args.cli_source.resolve()), "-B", str(cli_build),
                           f"-DCMAKE_INSTALL_PREFIX={cli_install.as_posix()}",
                           f"-DCMAKE_PREFIX_PATH={core.as_posix()};{dependency_prefix.as_posix()}",

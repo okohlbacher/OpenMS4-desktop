@@ -451,7 +451,7 @@
     {
       "upstream": "src/openms_gui/include/OpenMS/VISUAL/Plot3DOpenGLCanvas.h",
       "package": "desktop",
-      "path": "gui/include/OpenMS/VISUAL/Plot3DOpenGLCanvas.h"
+      "path": "gui/include/OpenMS/VISUAL/Plot3DRhiCanvas.h"
     },
     {
       "upstream": "src/openms_gui/include/OpenMS/VISUAL/Plot3DWidget.h",
@@ -1556,7 +1556,7 @@
     {
       "upstream": "src/openms_gui/source/VISUAL/Plot3DOpenGLCanvas.cpp",
       "package": "desktop",
-      "path": "gui/source/VISUAL/Plot3DOpenGLCanvas.cpp"
+      "path": "gui/source/VISUAL/Plot3DRhiCanvas.cpp"
     },
     {
       "upstream": "src/openms_gui/source/VISUAL/Plot3DWidget.cpp",

@@ -69,6 +69,9 @@ Qt/native runtime is needed to run these developer artifacts.
 resource closure, manifest source ownership, GUI include closure, UI inputs,
 native application resources, workflow fixtures, resolver migration and import
 provenance. It does not configure or compile OpenMS.
+The platform CI driver runs this check before configuring the native build.
+Provenance retains the original upstream OpenGL filenames and maps them to the
+replacement QRhi canvas files in this repository.
 
 When compiled testing is authorized, `BUILD_TESTING=ON` builds five GUI class
 tests using the core SDK's optional TestSupport component and its
