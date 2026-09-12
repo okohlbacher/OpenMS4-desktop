@@ -85,12 +85,27 @@ jobs:
             tr -d '\r' < *.sha256 | sha256sum -c -
           fi
           tar -xzf *.tar.gz
+      - name: Download and verify the released TOPP tools
+        shell: bash
+        run: |
+          mkdir -p "${{ runner.temp }}/topp"
+          gh release download topp-v1.0.0-ci.3 --repo okohlbacher/OpenMS4-topp \
+            --pattern "OpenMS4-topp-${{ matrix.platform }}-Release-174b576e244e.tar.gz*" \
+            --dir "${{ runner.temp }}/topp"
+          cd "${{ runner.temp }}/topp"
+          if command -v shasum >/dev/null; then
+            tr -d '\r' < *.sha256 | shasum -a 256 -c -
+          else
+            tr -d '\r' < *.sha256 | sha256sum -c -
+          fi
+          tar -xzf *.tar.gz
       - name: Build, test, install, and package
         run: >-
           micromamba run -n package-ci python tools/ci/run.py
           --platform ${{ matrix.platform }} --jobs ${{ matrix.jobs }}
           --core-dir "${{ runner.temp }}/core"
           --cli-source dependencies/cli
+          --topp-dir "${{ runner.temp }}/topp"
           --test-data-source dependencies/test-data
           --work-dir "${{ runner.temp }}/desktop"
       - name: Upload tested package

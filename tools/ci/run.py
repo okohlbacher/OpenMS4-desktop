@@ -64,6 +64,8 @@ def main() -> None:
     parser.add_argument("--platform", required=True)
     parser.add_argument("--core-dir", required=True, type=Path)
     parser.add_argument("--cli-source", required=True, type=Path)
+    parser.add_argument("--topp-dir", type=Path,
+                        help="extracted TOPP release; the TOPPAS pipeline tests invoke its tools")
     parser.add_argument("--test-data-source", type=Path,
                         help="installed for the scientific fixture tests; omit to skip them")
     parser.add_argument("--work-dir", required=True, type=Path)
@@ -141,9 +143,17 @@ def main() -> None:
         prefixes.append(data_install.as_posix())
         options.append("-DOPENMS4_REGRESSION_TESTS=ON")
     prefixes.append(dependency_prefix.as_posix())
-    options += ["-DOPENMS_GUI_WEBENGINE=OFF", "-DOPENMS_DESKTOP_INTERACTIVE_TESTS=OFF",
-                "-DOPENMS_DESKTOP_PIPELINE_TESTS=ON"]
+    options += ["-DOPENMS_GUI_WEBENGINE=OFF", "-DOPENMS_DESKTOP_INTERACTIVE_TESTS=OFF"]
     env["QT_QPA_PLATFORM"] = "minimal"
+    if args.topp_dir:
+        # A TOPPAS pipeline runs real TOPP tools, which belong to another package,
+        # so the pipeline tests need an installed product set to discover.
+        topp = core_prefix(args.topp_dir.resolve())
+        env["OPENMS_TOOL_PREFIX_PATH"] = str(topp)
+        env["PATH"] = str(topp / "bin") + os.pathsep + env["PATH"]
+        options.append("-DOPENMS_DESKTOP_PIPELINE_TESTS=ON")
+    else:
+        options.append("-DOPENMS_DESKTOP_PIPELINE_TESTS=OFF")
     run("configure-package", ["cmake", "-S", str(source), "-B", str(build),
                            f"-DCMAKE_INSTALL_PREFIX={install.as_posix()}",
                            f"-DCMAKE_PREFIX_PATH={';'.join(prefixes)}",
