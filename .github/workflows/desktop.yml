@@ -15,7 +15,9 @@ permissions:
 jobs:
   native:
     name: ${{ matrix.platform }} / Release
-    runs-on: ${{ matrix.runner }}
+    # Pushes and dispatches build Linux x64 on the self-hosted dax runner; pull
+    # requests from forks must never run there, so they stay on hosted runners.
+    runs-on: ${{ (github.event_name != 'pull_request' && matrix.platform == 'linux-x64' && 'dax-linux-x64') || matrix.runner }}
     timeout-minutes: 120
     strategy:
       fail-fast: false
@@ -102,7 +104,7 @@ jobs:
       - name: Build, test, install, and package
         run: >-
           micromamba run -n package-ci python tools/ci/run.py
-          --platform ${{ matrix.platform }} --jobs ${{ matrix.jobs }}
+          --platform ${{ matrix.platform }} --jobs ${{ startsWith(runner.name, 'dax') && 24 || matrix.jobs }}
           --core-dir "${{ runner.temp }}/core"
           --cli-source dependencies/cli
           --topp-dir "${{ runner.temp }}/topp"
