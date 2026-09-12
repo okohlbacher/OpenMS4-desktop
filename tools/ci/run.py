@@ -28,12 +28,21 @@ VIEWERS = ["TOPPView", "ImageCreator", "INIFileEditor"]
 WORKFLOWS = ["TOPPAS", "ExecutePipeline"]
 
 
-def check_install(prefix: Path, windows: bool) -> None:
+def installed_executable(prefix: Path, tool: str) -> Path:
+    """Resolve an installed entry point, which macOS ships as an application bundle."""
+    candidates = [prefix / "bin" / f"{tool}.exe",
+                  prefix / "bin" / tool,
+                  prefix / "bin" / f"{tool}.app/Contents/MacOS/{tool}"]
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate
+    raise ValueError(f"{tool} was not installed under {prefix / 'bin'}")
+
+
+def check_install(prefix: Path) -> None:
     """Fail unless the GUI SDK and both entry points were installed."""
     for tool in VIEWERS + WORKFLOWS:
-        executable = prefix / "bin" / (f"{tool}.exe" if windows else tool)
-        if not executable.is_file():
-            raise ValueError(f"{executable} was not installed")
+        installed_executable(prefix, tool)
     if not sorted(prefix.glob("lib/cmake/OpenMSGUI/OpenMSGUIConfig.cmake")):
         raise ValueError("the OpenMSGUI package configuration was not installed")
 
@@ -169,9 +178,9 @@ def main() -> None:
     run("test-package", ["ctest", "--test-dir", str(build), "-C", configuration,
                       "--output-on-failure", "--no-tests=error", "--parallel", str(args.jobs)])
     run("install-package", ["cmake", "--install", str(build), "--config", configuration])
-    check_install(install, windows)
+    check_install(install)
     env["OPENMS_TOOL_PREFIX_PATH"] = str(install)
-    pipeline = install / "bin" / ("ExecutePipeline.exe" if windows else "ExecutePipeline")
+    pipeline = installed_executable(install, "ExecutePipeline")
     run("installed-execute-pipeline-help", [str(pipeline), "--help"])
     revision = subprocess.check_output(
         ["git", "rev-parse", "HEAD"], cwd=source, text=True).strip()
