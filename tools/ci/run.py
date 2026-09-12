@@ -152,7 +152,7 @@ def main() -> None:
         prefixes.append(data_install.as_posix())
         options.append("-DOPENMS4_REGRESSION_TESTS=ON")
     prefixes.append(dependency_prefix.as_posix())
-    options += ["-DOPENMS_GUI_WEBENGINE=OFF", "-DOPENMS_DESKTOP_INTERACTIVE_TESTS=OFF"]
+    options.append("-DOPENMS_DESKTOP_INTERACTIVE_TESTS=OFF")
     env["QT_QPA_PLATFORM"] = "minimal"
     if args.topp_dir:
         # A TOPPAS pipeline runs real TOPP tools, which belong to another package,

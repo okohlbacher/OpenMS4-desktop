@@ -474,11 +474,6 @@
       "path": "gui/include/OpenMS/VISUAL/RecentFilesMenu.h"
     },
     {
-      "upstream": "src/openms_gui/include/OpenMS/VISUAL/SequenceVisualizer.h",
-      "package": "desktop",
-      "path": "gui/include/OpenMS/VISUAL/SequenceVisualizer.h"
-    },
-    {
       "upstream": "src/openms_gui/include/OpenMS/VISUAL/SpectraIDViewTab.h",
       "package": "desktop",
       "path": "gui/include/OpenMS/VISUAL/SpectraIDViewTab.h"
@@ -1324,11 +1319,6 @@
       "path": "gui/source/VISUAL/ICONS/resources.qrc"
     },
     {
-      "upstream": "src/openms_gui/source/VISUAL/ICONS/sequence_viz.html",
-      "package": "desktop",
-      "path": "gui/source/VISUAL/ICONS/sequence_viz.html"
-    },
-    {
       "upstream": "src/openms_gui/source/VISUAL/ICONS/snap.png",
       "package": "desktop",
       "path": "gui/source/VISUAL/ICONS/snap.png"
@@ -1587,16 +1577,6 @@
       "upstream": "src/openms_gui/source/VISUAL/RecentFilesMenu.cpp",
       "package": "desktop",
       "path": "gui/source/VISUAL/RecentFilesMenu.cpp"
-    },
-    {
-      "upstream": "src/openms_gui/source/VISUAL/SequenceVisualizer.cpp",
-      "package": "desktop",
-      "path": "gui/source/VISUAL/SequenceVisualizer.cpp"
-    },
-    {
-      "upstream": "src/openms_gui/source/VISUAL/SequenceVisualizer.ui",
-      "package": "desktop",
-      "path": "gui/source/VISUAL/SequenceVisualizer.ui"
     },
     {
       "upstream": "src/openms_gui/source/VISUAL/SpectraIDViewTab.cpp",

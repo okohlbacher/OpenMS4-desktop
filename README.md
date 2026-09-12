@@ -37,8 +37,7 @@ through QRhi (Metal, Direct3D, Vulkan or OpenGL, chosen by Qt per platform), who
 semi-public headers come from the GuiPrivate component. This package no longer uses OpenGL
 itself; a Qt built with OpenGL support, such as conda-forge's, still needs the GL development
 files when it is configured, which is why the Linux CI rows keep them;
-macOS additionally links PrintSupport. `OPENMS_GUI_WEBENGINE=OFF` disables optional
-WebEngine views. Core/CLI and all C++ consumers must use compatible compiler,
+macOS additionally links PrintSupport. Core/CLI and all C++ consumers must use compatible compiler,
 runtime, architecture and build configuration. Revision checks do not establish
 binary ABI compatibility by themselves.
 
@@ -98,7 +97,7 @@ this checkout with `OPENMS_SDK_PREFIX` pointing to that shared installation:
 ```bash
 cmake -S gui -B ../desktop-gui-build -G Ninja -DCMAKE_BUILD_TYPE=Debug \
   -DCMAKE_PREFIX_PATH="$OPENMS_SDK_PREFIX" -DCMAKE_INSTALL_PREFIX="$OPENMS_SDK_PREFIX" \
-  -DOPENMS_GUI_WEBENGINE=OFF -DOPENMS4_REQUIRE_CLEAN_SOURCE=ON -DBUILD_TESTING=ON
+  -DOPENMS4_REQUIRE_CLEAN_SOURCE=ON -DBUILD_TESTING=ON
 cmake --build ../desktop-gui-build --parallel 3
 QT_QPA_PLATFORM=offscreen ctest --test-dir ../desktop-gui-build --output-on-failure
 cmake --install ../desktop-gui-build
@@ -110,4 +109,4 @@ installing GUI. The installed GUI must match this checkout's commit. Provide the
 same native dependency prefixes/curl discovery flags used for Core when necessary.
 Current native results and remaining platform/product gates are recorded in the
 superproject implementation validation report; the commands alone do not establish
-acceptance. Optional WebEngine and interactive tests need their own runs.
+acceptance. Interactive tests need their own runs.

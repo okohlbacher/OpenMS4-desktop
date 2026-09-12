@@ -20,14 +20,10 @@
 #include <OpenMS/SYSTEM/NetworkGetRequest.h>
 #include <OpenMS/VISUAL/LayerData1DPeak.h>
 #include <OpenMS/VISUAL/MISC/GUIHelpers.h>
-#include <OpenMS/VISUAL/SequenceVisualizer.h>
 #include <OpenMS/VISUAL/SpectraIDViewTab.h>
 #include <OpenMS/VISUAL/TableView.h>
 #include <OpenMS/VISUAL/MISC/Qt5Port.h>
 
-#include <QJsonArray>
-#include <QJsonObject>
-#include <QJsonValue>
 #include <QRegularExpression>
 #include <QString>
 #include <QStringList>
@@ -268,101 +264,6 @@ namespace OpenMS
       // while opening the window instead of showing another widget that lists all accessions
       openUniProtSiteWithAccession_(accession);
     }
-
-    //
-    // Check if Qt WebEngineWidgets is installed on user's machine and if so,
-    // open a new window to visualize protein sequence
-    #ifdef QT_WEBENGINEWIDGETS_LIB
-    if (column == ProteinClmn::SEQUENCE)
-    {
-      // store the current sequence clicked from the FULL_PROTEIN_SEQUENCE column. This column(hidden by default) 
-      // stores the full protein sequence
-      QString protein_sequence = protein_table_widget_->item(row, ProteinClmn::FULL_PROTEIN_SEQUENCE)->data(Qt::DisplayRole).toString();
-      // store the accession as string, eg: tr|P02769|ALBU_BOVIN
-      QString current_accession = protein_table_widget_->item(row, ProteinClmn::ACCESSION)->data(Qt::DisplayRole).toString();
-
-      // extract the part of accession , eg: P02769
-      QString accession_num;
-      try
-      {
-        accession_num = extractNumFromAccession_(current_accession);
-      }
-      catch (Exception::InvalidValue&)
-      {
-        // TODO: print in status(?) that accession format is not supported
-      }    
-
-      auto item_pepid = table_widget_->item(row, Clmn::ID_NR);
-
-      if (item_pepid)
-      {
-
-        //array to store object of start-end positions, sequence and mod data of peptides;
-        QJsonArray peptides_data;
-       
-        //use data from the protein_to_peptide_id_map map and store the start/end position to the QJsonArray
-        for (auto pep_id_ptr : protein_to_peptide_id_map[current_accession.toStdString()])
-        {
-          const vector<PeptideHit>& pep_hits = pep_id_ptr->getHits();
-
-          //store start and end positions
-          //TODO maybe we could store the index of the hit that belongs to that specific protein in the map as well
-          // or we generally should only look at the first hit
-          for (const auto & pep_hit : pep_hits)
-          {
-            const vector<PeptideEvidence>& evidences = pep_hit.getPeptideEvidences();
-            const AASequence& aaseq = pep_hit.getSequence();
-            const auto qstrseq = toQString(aaseq.toString());
-
-            for (const auto & evidence : evidences)
-            {
-              const std::string& id_accession = evidence.getProteinAccession();
-              QJsonObject pep_data_obj;
-              int pep_start = evidence.getStart();
-              int pep_end = evidence.getEnd();
-              if (toQString(id_accession) == current_accession)
-              {
-                // contains key-value of modName and vector of indices
-                QJsonObject mod_data;
-
-                for (int i = 0; i < (int)aaseq.size(); ++i)
-                {
-                  if (aaseq[i].isModified())
-                  {
-                    const std::string& mod_name = aaseq[i].getModificationName();
-
-                    if (!mod_data.contains(toQString(mod_name)))
-                    {
-                      mod_data[toQString(mod_name)] = QJsonArray{i + pep_start}; // add pep_start to get the correct location in the whole sequence
-                    }
-                    else
-                    {
-                      QJsonArray values = mod_data.value(toQString(mod_name)).toArray();
-                      // add pep_start to get the correct location in the whole sequence
-                      values.push_back(i + pep_start); 
-                      mod_data[toQString(mod_name)] = values;
-                    }
-                  }
-                }
-                pep_data_obj["start"] = pep_start;
-                pep_data_obj["end"] = pep_end;
-                pep_data_obj["seq"] = qstrseq;
-                pep_data_obj["mod_data"] = mod_data;
-                //Push objects to array that will be passed to html
-                peptides_data.push_back(pep_data_obj);
-              }
-            }
-          }
-        }
-
-        auto* widget = new SequenceVisualizer(this); // no parent since we want a new window
-        widget->setWindowFlags(Qt::Window);
-        widget->resize(1500,500); // make a bit bigger
-        widget->setProteinPeptideDataToJsonObj(accession_num, protein_sequence, peptides_data);
-        widget->show();
-      }
-    }
-    #endif
   }
 
   void SpectraIDViewTab::currentSpectraSelectionChanged_()
@@ -646,9 +547,7 @@ namespace OpenMS
 
     protein_table_widget_->setHeaders(headers);
     protein_table_widget_->setColumnHidden(ProteinClmn::FULL_PROTEIN_SEQUENCE, true);
-    #ifndef QT_WEBENGINEWIDGETS_LIB
-      protein_table_widget_->setColumnHidden(ProteinClmn::SEQUENCE, true); // no web engine? hide sequence column used to do the JS query
-    #endif
+    protein_table_widget_->setColumnHidden(ProteinClmn::SEQUENCE, true); // the JS sequence viewer that used it is gone
     protein_table_widget_->resizeColumnsToContents();
     protein_table_widget_->setSortingEnabled(true);
     protein_table_widget_->sortByColumn(ProteinClmn::SCORE, Qt::AscendingOrder); //TODO figure out higher_score_better
