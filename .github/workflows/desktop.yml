@@ -55,13 +55,13 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           repository: okohlbacher/OpenMS4-cli
-          ref: c19e49414bcd9ebdea42f89b3f74d2823205892c
+          ref: d5213ff3551a8608e4e3f930fd4a6f85a8c82f97
           path: dependencies/cli
           persist-credentials: false
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           repository: okohlbacher/OpenMS4-test-data
-          ref: 4a2d15e2fcc8915dcc1acfbea2740ce0b9a1a336
+          ref: a14ecf5d5f5de878dbaf5ddb9feafe154b02303a
           path: dependencies/test-data
           persist-credentials: false
       - uses: mamba-org/setup-micromamba@f457c30a868e4760d3a6fcea5f25dc655b8edf39 # v3
@@ -74,28 +74,28 @@ jobs:
           cache-environment: true
           cache-environment-key: desktop-${{ matrix.platform }}
           post-cleanup: all
-      - name: Download and verify the pinned Core SDK
+      - name: Download and verify the released TOPP tools
         shell: bash
         run: |
-          mkdir -p "${{ runner.temp }}/core"
-          gh release download core-v4.0.0-ci.1 --repo okohlbacher/OpenMS4-core \
-            --pattern "OpenMS4-core-${{ matrix.platform }}-Release-94a2b114939e.tar.gz*" \
-            --dir "${{ runner.temp }}/core"
-          cd "${{ runner.temp }}/core"
+          mkdir -p "${{ runner.temp }}/topp"
+          gh release download topp-v1.0.0-ci.4 --repo okohlbacher/OpenMS4-topp \
+            --pattern "OpenMS4-topp-${{ matrix.platform }}-Release-c6e98a7782cc.tar.gz*" \
+            --dir "${{ runner.temp }}/topp"
+          cd "${{ runner.temp }}/topp"
           if command -v shasum >/dev/null; then
             tr -d '\r' < *.sha256 | shasum -a 256 -c -
           else
             tr -d '\r' < *.sha256 | sha256sum -c -
           fi
           tar -xzf *.tar.gz
-      - name: Download and verify the released TOPP tools
+      - name: Download and verify the pinned Core SDK
         shell: bash
         run: |
-          mkdir -p "${{ runner.temp }}/topp"
-          gh release download topp-v1.0.0-ci.3 --repo okohlbacher/OpenMS4-topp \
-            --pattern "OpenMS4-topp-${{ matrix.platform }}-Release-174b576e244e.tar.gz*" \
-            --dir "${{ runner.temp }}/topp"
-          cd "${{ runner.temp }}/topp"
+          mkdir -p "${{ runner.temp }}/core"
+          gh release download core-v4.0.0-ci.2 --repo okohlbacher/OpenMS4-core \
+            --pattern "OpenMS4-core-${{ matrix.platform }}-Release-bc9cc12514c7.tar.gz*" \
+            --dir "${{ runner.temp }}/core"
+          cd "${{ runner.temp }}/core"
           if command -v shasum >/dev/null; then
             tr -d '\r' < *.sha256 | shasum -a 256 -c -
           else

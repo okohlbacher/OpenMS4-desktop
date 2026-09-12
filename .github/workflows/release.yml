@@ -22,8 +22,11 @@ jobs:
         run: |
           set -euo pipefail
           revision=$(git rev-parse HEAD)
-          run_id=$(gh run list --workflow desktop.yml --commit "$revision" --event push \
-            --status success --limit 1 --json databaseId --jq '.[0].databaseId // empty')
+          # Ask the API directly: 'gh run list --status success' on the runner image does not
+          # match a run whose first attempt failed, which would refuse a release whose CI is green.
+          run_id=$(gh api \
+            "repos/$GH_REPO/actions/workflows/desktop.yml/runs?head_sha=$revision&event=push&status=success&per_page=1" \
+            --jq '.workflow_runs[0].id // empty')
           if [ -z "$run_id" ]; then
             echo "::error::No successful branch CI run exists for $revision"
             exit 1
@@ -39,4 +42,4 @@ jobs:
           gh release create "${{ github.ref_name }}" \
             ./artifacts/desktop-*/* \
             --verify-tag --prerelease --title "Desktop ${{ github.ref_name }}" \
-            --notes "Tested packages for Linux x64/arm64, macOS x64/arm64 and Windows x64, Each archive carries the GUI SDK, TOPPView, ImageCreator, INIFileEditor, TOPPAS and ExecutePipeline, and requires the pinned openms4-core SDK and a matching Qt 6. Interactive and WebEngine tests stay disabled in this headless build."
+            --notes "Each archive carries the GUI SDK, TOPPView, ImageCreator, INIFileEditor, TOPPAS and ExecutePipeline, and requires the pinned openms4-core SDK and a matching Qt 6.7. Interactive tests stay disabled in this headless build."
