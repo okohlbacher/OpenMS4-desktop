@@ -103,6 +103,8 @@ jobs:
           fi
           tar -xzf *.tar.gz
       - name: Build, test, install, and package
+        env:
+          OPENMS4_QRHI_RENDER_TEST: ${{ startsWith(runner.name, 'studio-') && '1' || '0' }}
         run: >-
           micromamba run -n package-ci python tools/ci/run.py
           --platform ${{ matrix.platform }} --jobs ${{ (startsWith(runner.name, 'dax') && 24) || (startsWith(runner.name, 'studio') && 8) || matrix.jobs }}

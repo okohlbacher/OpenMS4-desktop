@@ -2,7 +2,8 @@
 """Build and test the desktop package against installed, pinned Core, CLI and TestData.
 
 Desktop owns no console tool manifest: it publishes a GUI SDK plus the viewer and
-workflow executables, so it checks those instead. Every job runs headless.
+workflow executables, so it checks those instead. The Mac Studio additionally
+requires the 3D view to render a real frame through the native display backend.
 """
 
 import argparse
@@ -68,6 +69,18 @@ def core_prefix(extracted: Path) -> Path:
     return candidates[0]
 
 
+def render_test(run, build: Path, configuration: str, results: Path) -> None:
+    """Require a real frame while keeping the other tests' headless environment."""
+    image = results / "plot3d-render.png"
+    run("test-rendered-frame", ["cmake", "-E", "env", "QT_QPA_PLATFORM=cocoa",
+                               f"OPENMS_PLOT3D_RENDER_TEST_IMAGE={image}",
+                               "ctest", "--test-dir", str(build), "-C", configuration,
+                               "-R", "^Plot3DRhiCanvas_test$", "--verbose",
+                               "--no-tests=error", "--timeout", "60"])
+    if not image.is_file():
+        raise ValueError("QRhi test did not produce the required rendered frame")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--platform", required=True)
@@ -79,11 +92,16 @@ def main() -> None:
                         help="installed for the scientific fixture tests; omit to skip them")
     parser.add_argument("--work-dir", required=True, type=Path)
     parser.add_argument("--jobs", type=int, default=2)
+    parser.add_argument("--render-test", action="store_true",
+                        default=os.environ.get("OPENMS4_QRHI_RENDER_TEST") == "1",
+                        help="require a real macOS QRhi frame (needs a logged-in display session)")
     args = parser.parse_args()
     source = Path(__file__).resolve().parents[2]
     work = args.work_dir.resolve()
     if args.jobs < 1 or (work.exists() and any(work.iterdir())):
         parser.error("--jobs must be positive and --work-dir must be empty")
+    if args.render_test and sys.platform != "darwin":
+        parser.error("--render-test requires macOS with its native Cocoa display backend")
     results = work / "results"
     results.mkdir(parents=True)
     core = core_prefix(args.core_dir.resolve())
@@ -179,6 +197,8 @@ def main() -> None:
         env["PATH"] = os.pathsep.join([*dll_dirs, env["PATH"]])
     run("test-package", ["ctest", "--test-dir", str(build), "-C", configuration,
                       "--output-on-failure", "--no-tests=error", "--parallel", str(args.jobs)])
+    if args.render_test:
+        render_test(run, build, configuration, results)
     run("install-package", ["cmake", "--install", str(build), "--config", configuration])
     check_install(install)
     env["OPENMS_TOOL_PREFIX_PATH"] = str(install)

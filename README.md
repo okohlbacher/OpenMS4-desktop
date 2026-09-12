@@ -113,3 +113,10 @@ same native dependency prefixes/curl discovery flags used for Core when necessar
 Current native results and remaining platform/product gates are recorded in the
 superproject implementation validation report; the commands alone do not establish
 acceptance. Interactive tests need their own runs.
+
+The Mac Studio CI runner additionally runs `Plot3DRhiCanvas_test` with the Cocoa
+display backend and requires it to render a nonempty, multicolour frame. Failure
+to render fails that job; the PNG and test log are uploaded with its results.
+Other runners retain the headless tests. The CI driver enables this gate through
+`--render-test` or `OPENMS4_QRHI_RENDER_TEST=1`, requiring a logged-in macOS display
+session and the same native dependencies as the build.

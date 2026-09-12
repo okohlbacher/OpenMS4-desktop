@@ -4,10 +4,29 @@ from pathlib import Path
 import sys
 
 sys.path.insert(0, str(Path(__file__).parent))
-from run import VIEWERS, WORKFLOWS, archive_install, check_install, core_prefix, installed_executable
+from run import VIEWERS, WORKFLOWS, archive_install, check_install, core_prefix, installed_executable, render_test
 
 
 class PackagingTest(unittest.TestCase):
+    def test_render_acceptance_requires_a_frame_and_preserves_headless_environment(self):
+        import os
+        from unittest.mock import patch
+
+        with tempfile.TemporaryDirectory() as directory:
+            results = Path(directory)
+            with self.assertRaisesRegex(ValueError, "did not produce"):
+                render_test(lambda *args: None, results / "build", "Release", results)
+
+            def successful_render(name, command):
+                self.assertEqual(name, "test-rendered-frame")
+                self.assertEqual(command[:4], ["cmake", "-E", "env", "QT_QPA_PLATFORM=cocoa"])
+                image_arg = next(arg for arg in command if arg.startswith("OPENMS_PLOT3D_RENDER_TEST_IMAGE="))
+                Path(image_arg.split("=", 1)[1]).write_bytes(b"\x89PNG\r\n\x1a\n")
+
+            with patch.dict(os.environ, QT_QPA_PLATFORM="minimal"):
+                render_test(successful_render, results / "build", "Release", results)
+                self.assertEqual(os.environ["QT_QPA_PLATFORM"], "minimal")
+
     def test_archive_and_core_discovery(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
