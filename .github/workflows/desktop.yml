@@ -73,6 +73,7 @@ jobs:
           generate-run-shell: false
           cache-environment: true
           cache-environment-key: desktop-${{ matrix.platform }}
+          post-cleanup: all
       - name: Download and verify the pinned Core SDK
         shell: bash
         run: |
