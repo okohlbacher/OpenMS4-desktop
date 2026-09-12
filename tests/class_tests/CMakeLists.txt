@@ -3,7 +3,7 @@ if(NOT TARGET OpenMS::TestFramework OR NOT EXISTS "${OpenMS_TEST_SUPPORT_SOURCE}
   message(FATAL_ERROR "GUI tests require the core SDK TestSupport component and OpenMS_TEST_SUPPORT_SOURCE")
 endif()
 set(_class_tests Annotation1DPeakItem_test AxisTickCalculator_test
-  FileWatcher_test GUIHelpers_test MultiGradient_test)
+  FileWatcher_test GUIHelpers_test MultiGradient_test Plot3DRhiCanvas_test)
 foreach(_test IN LISTS _class_tests)
   add_executable(${_test} "source/${_test}.cpp" "${OpenMS_TEST_SUPPORT_SOURCE}")
   target_link_libraries(${_test} PRIVATE OpenMS::GUI OpenMS::Core OpenMS::TestFramework)

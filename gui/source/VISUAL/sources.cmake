@@ -50,7 +50,7 @@ Plot1DWidget.cpp
 Plot2DCanvas.cpp
 Plot2DWidget.cpp
 Plot3DCanvas.cpp
-Plot3DOpenGLCanvas.cpp
+Plot3DRhiCanvas.cpp
 Plot3DWidget.cpp
 PlotCanvas.cpp
 PlotWidget.cpp
@@ -100,5 +100,7 @@ source_group("Source Files\\VISUAL" FILES ${sources})
 # add   : icons are added to source/VISUAL/ICONS/resources.qrc
 # remove: after removing an icon, you have to rerun 'cmake' to fix the dependencies
 qt_add_resources(qt_resource_file source/VISUAL/ICONS/resources.qrc)
-set(OpenMSVisual_sources ${OpenMSVisual_sources} ${qt_resource_file})
-set_property(SOURCE ${qt_resource_file} PROPERTY SKIP_AUTOGEN ON)
+# pre-baked QRhi shaders of the 3D view; see source/VISUAL/SHADERS/README.md
+qt_add_resources(qt_shader_resource_file source/VISUAL/SHADERS/shaders.qrc)
+set(OpenMSVisual_sources ${OpenMSVisual_sources} ${qt_resource_file} ${qt_shader_resource_file})
+set_property(SOURCE ${qt_resource_file} ${qt_shader_resource_file} PROPERTY SKIP_AUTOGEN ON)

@@ -11,32 +11,47 @@
 // OpenMS_GUI config
 #include <OpenMS/VISUAL/OpenMS_GUIConfig.h>
 
-#include <QOpenGLWidget>
-#include <QOpenGLFunctions_2_0>
+#include <QMatrix4x4>
+#include <QRhiWidget>
 
 // OpenMS
 #include <OpenMS/DATASTRUCTURES/DRange.h>
+
+#include <memory>
+#include <vector>
+
+class QPainter;
 
 namespace OpenMS
 {
   class Plot3DCanvas;
   class LayerDataBase;
 
+  namespace Internal
+  {
+    class Plot3DLegendOverlay;
+  }
+
   /**
-      @brief OpenGL Canvas for 3D-visualization of map data
+      @brief QRhi canvas for 3D-visualization of map data
+
+      Renders the 3D peak map through Qt's rendering hardware interface, so the
+      same code runs on Metal, Direct3D, Vulkan and OpenGL. Geometry is built on
+      the CPU as vertex batches and uploaded when the data or view mode changes;
+      the axis legend is painted by a transparent overlay widget, because a
+      QRhiWidget composites a texture and cannot be painted on directly.
 
       @note Do not use this class directly. Use Plot3DCanvas instead!
 
       @ingroup PlotWidgets
   */
-
-  class OPENMS_GUI_DLLAPI Plot3DOpenGLCanvas :
-    public QOpenGLWidget, 
-    protected QOpenGLFunctions_2_0
+  class OPENMS_GUI_DLLAPI Plot3DRhiCanvas :
+    public QRhiWidget
   {
     Q_OBJECT
 
     friend class Plot3DCanvas;
+    friend class Internal::Plot3DLegendOverlay;
 
 public:
 
@@ -49,23 +64,23 @@ public:
      @param[in] parent The parent widget
      @param[in] canvas_3d The main 3d canvas
     */
-    Plot3DOpenGLCanvas(QWidget * parent, Plot3DCanvas & canvas_3d);
+    Plot3DRhiCanvas(QWidget * parent, Plot3DCanvas & canvas_3d);
     /**
         @brief Destructor
 
-        Destroys the OpenGLWidget and all associated data.
+        Destroys the widget, its GPU resources and all associated data.
     */
-    ~Plot3DOpenGLCanvas() override;
+    ~Plot3DRhiCanvas() override;
 
-    ///virtual function provided from QGLWidget
-    void initializeGL() override;
-    /// virtual function provided from QGLWidget
-    void resizeGL(int w, int h) override;
-    /// virtual function provided from QGLWidget
-    void paintGL() override;
+    /** @name Reimplemented QRhiWidget rendering */
+    //@{
+    void initialize(QRhiCommandBuffer * cb) override;
+    void render(QRhiCommandBuffer * cb) override;
+    //@}
 
     /** @name Reimplemented QT events */
     //@{
+    void resizeEvent(QResizeEvent * e) override;
     void mouseMoveEvent(QMouseEvent * e) override;
     void mouseReleaseEvent(QMouseEvent * e) override;
     void mousePressEvent(QMouseEvent * e) override;
@@ -75,34 +90,74 @@ public:
     void setXLabel(const QString& l) { x_label_ = l; }
     void setYLabel(const QString& l) { y_label_ = l; }
     void setZLabel(const QString& l) { z_label_ = l; }
-    
+
     /// updates the min and max values of the intensity
     void updateIntensityScale();
+
+    /// Rebuilds all geometry from the canvas data before the next frame
+    void markGeometryDirty();
+
+    /// Number of vertices in each drawable group of the current view
+    struct GeometryVertexCounts
+    {
+      int ground = 0;
+      int axes = 0;
+      int axes_ticks = 0;
+      int gridlines = 0;
+      int stickdata = 0;
+    };
+
+    /// Rebuilds all geometry from the canvas data now, without needing a frame
+    void rebuildGeometry();
+
+    /// Reports how many vertices the last geometry build produced
+    GeometryVertexCounts geometryVertexCounts() const;
+
 protected:
+    /// Which primitive a vertex batch draws
+    enum class Topology
+    {
+      TRIANGLES,
+      LINES,
+      POINTS
+    };
+
+    /// CPU-side vertices of one drawable group: xyz position and rgba colour, interleaved
+    struct VertexBatch
+    {
+      std::vector<float> data;
+      Topology topology = Topology::LINES;
+      float line_width = 1.0f;
+
+      /// appends one vertex
+      void add(double x, double y, double z, const QColor& color);
+      /// number of vertices in the batch
+      int vertexCount() const { return int(data.size() / 7); }
+    };
+
     /// helper function to project point to device space
-    GLint project_(GLdouble objx, GLdouble objy, GLdouble objz, GLdouble * winx, GLdouble * winy); 
-    /// helper function to transform point using matrix m (homogeneous coordinates)
-    void transformPoint_(GLdouble out[4], const GLdouble m[16], const GLdouble in[4]);
-    ///helper function to replicate old behaviour of QGLWidget
-    void renderText_(double x, double y, double z, const QString & text);
-    ///helper function to replicate old behaviour of QGLWidget
-    void qglColor_(const QColor& color);
-    ///helper function to replicate old behaviour of QGLWidget
-    void qglClearColor_(const QColor& clearColor);
-    /// Builds up a display list for the 3D view
-    GLuint makeDataAsStick_();
-    /// Builds up a display list for the axes
-    GLuint makeAxes_();
-    /// Builds up a display list for axis ticks
-    GLuint makeAxesTicks_();
-    /// Builds up a display list for the birds-eye view
-    GLuint makeDataAsTopView_();
-    /// Builds up a display list for the background
-    GLuint makeGround_();
-    /// Builds up a display list for grid lines
-    GLuint makeGridLines_();
+    bool project_(double objx, double objy, double objz, double * winx, double * winy) const;
+    /// renders text at the projected position of a world coordinate
+    void renderText_(QPainter& painter, double x, double y, double z, const QString & text) const;
+    /// Builds the geometry for the peak sticks of the 3D view
+    VertexBatch makeDataAsStick_();
+    /// Builds the geometry for the axes
+    VertexBatch makeAxes_();
+    /// Builds the geometry for axis ticks
+    VertexBatch makeAxesTicks_();
+    /// Builds the geometry for the birds-eye view
+    VertexBatch makeDataAsTopView_();
+    /// Builds the geometry for the background
+    VertexBatch makeGround_();
+    /// Builds the geometry for grid lines
+    VertexBatch makeGridLines_();
     /// Draws the axis texts
-    void drawAxesLegend_();
+    void drawAxesLegend_(QPainter& painter);
+
+    /// Rebuilds the vertex batches according to the current action mode
+    void rebuildGeometry_();
+    /// Recomputes the projection and model-view matrices for the current view
+    void updateMatrices_();
 
     /// computes the dataset supposed to be drawn when a section has been selected in zoom mode
     void computeSelection_();
@@ -120,7 +175,7 @@ protected:
     double scaledInversMZ_(double mz);
     /// returns the BB-intensity -coordinate :  values --> BB-coordinates
     double scaledIntensity_(float intensity, Size layer_index);
-    
+
     /// recalculates the dot gradient interpolation values.
     void recalculateDotGradient_(LayerDataBase& layer);
     ///calculate the ticks for the gridlines
@@ -136,14 +191,31 @@ protected:
     /// restores the original rotation and zoom factor (e.g. before changing into zoom mode)
     void restoreRotationAndZoom();
 
-    /** @name Different OpenGL display lists */
+    /** @name Vertex batches of the current view */
     //@{
-    GLuint stickdata_;
-    GLuint axes_;
-    GLuint axes_ticks_;
-    GLuint gridlines_;
-    GLuint ground_;
+    VertexBatch stickdata_;
+    VertexBatch axes_;
+    VertexBatch axes_ticks_;
+    VertexBatch gridlines_;
+    VertexBatch ground_;
     //@}
+
+    /// GPU resources; only the implementation knows the QRhi types
+    struct RhiState;
+    std::unique_ptr<RhiState> rhi_state_;
+
+    /// whether the vertex batches must be rebuilt before the next frame
+    bool geometry_dirty_ = true;
+    /// whether the GPU buffers must be re-uploaded before the next frame
+    bool upload_dirty_ = true;
+
+    /// projection of the current view, in OpenGL clip-space conventions
+    QMatrix4x4 projection_;
+    /// model-view transform of the current view
+    QMatrix4x4 modelview_;
+
+    /// paints the axis legend over the rendered texture
+    Internal::Plot3DLegendOverlay* legend_overlay_ = nullptr;
 
     /// reference to Plot3DCanvas
     Plot3DCanvas & canvas_3d_;
@@ -161,8 +233,6 @@ protected:
     int yrot_tmp_;
     /// member z-variable that stores the original angle during zoom mode
     int zrot_tmp_;
-
-    QPainter* painter_ = nullptr;
 
     /// member variables for the zoom-mode
     QPoint mouse_move_end_, mouse_move_begin_;

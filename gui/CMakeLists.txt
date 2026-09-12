@@ -12,13 +12,17 @@ openms4_find_package(OpenMSCLI)
 openms4_source_revision(OpenMSGUI_SOURCE_REVISION OpenMSGUI_SOURCE_DIRTY)
 
 option(OPENMS_GUI_WEBENGINE "Enable Qt WebEngine sequence views when available" ON)
-set(_qt_components Core Gui Widgets Svg OpenGLWidgets)
+set(_qt_components Core Gui Widgets Svg)
 if(APPLE)
   list(APPEND _qt_components PrintSupport)
 endif()
-find_package(Qt6 6.1 REQUIRED COMPONENTS ${_qt_components})
+# 6.7 introduces QRhiWidget, which the 3D view renders through.
+find_package(Qt6 6.7 REQUIRED COMPONENTS ${_qt_components})
+# The QRhi classes behind QRhiWidget live in the private Gui module; asking for it
+# as a component is how Qt exposes them without QT_FIND_PRIVATE_MODULES.
+find_package(Qt6 6.7 REQUIRED COMPONENTS GuiPrivate)
 if(OPENMS_GUI_WEBENGINE)
-  find_package(Qt6 6.1 QUIET COMPONENTS WebEngineWidgets)
+  find_package(Qt6 6.7 QUIET COMPONENTS WebEngineWidgets)
   if(TARGET Qt6::WebEngineWidgets)
     list(APPEND _qt_components WebEngineWidgets)
   endif()
@@ -42,6 +46,10 @@ target_link_libraries(OpenMS_GUI PUBLIC OpenMS::Core PRIVATE OpenMS::CLI)
 foreach(_component IN LISTS _qt_components)
   target_link_libraries(OpenMS_GUI PUBLIC Qt6::${_component})
 endforeach()
+# The QRhi classes behind QRhiWidget are semi-public: their headers come with Qt's
+# private include path, and Qt makes no compatibility promise for them. Only the
+# 3D canvas implementation sees them, so the dependency stays private.
+target_link_libraries(OpenMS_GUI PRIVATE Qt6::GuiPrivate)
 target_include_directories(OpenMS_GUI PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>"

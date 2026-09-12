@@ -16,7 +16,7 @@
 #include <OpenMS/VISUAL/MISC/GUIHelpers.h>
 #include <OpenMS/VISUAL/LayerDataPeak.h>
 #include <OpenMS/VISUAL/MultiGradientSelector.h>
-#include <OpenMS/VISUAL/Plot3DOpenGLCanvas.h>
+#include <OpenMS/VISUAL/Plot3DRhiCanvas.h>
 #include <OpenMS/VISUAL/PlotWidget.h>
 #include <OpenMS/VISUAL/MISC/Qt5Port.h>
 
@@ -53,9 +53,9 @@ namespace OpenMS
     setParameters(preferences);
 
     linear_gradient_.fromString(param_.getValue("dot:gradient"));
-    openglcanvas_ = new Plot3DOpenGLCanvas(this, *this);
-    setFocusProxy(openglcanvas_);
-    connect(this, &PlotCanvas::actionModeChange, openglcanvas_, &Plot3DOpenGLCanvas::actionModeChange);
+    rhicanvas_ = new Plot3DRhiCanvas(this, *this);
+    setFocusProxy(rhicanvas_);
+    connect(this, &PlotCanvas::actionModeChange, rhicanvas_, &Plot3DRhiCanvas::actionModeChange);
     legend_shown_ = true;
 
     //connect preferences change to the right slot
@@ -66,7 +66,7 @@ namespace OpenMS
 
   void Plot3DCanvas::resizeEvent(QResizeEvent * e)
   {
-    openglcanvas_->resize(e->size().width(), e->size().height());
+    rhicanvas_->resize(e->size().width(), e->size().height());
   }
 
   void Plot3DCanvas::showLegend(bool show)
@@ -107,7 +107,7 @@ namespace OpenMS
     }
 
     emit layerActivated(this);
-    openglwidget()->recalculateDotGradient_(getCurrentLayer());
+    rhiwidget()->recalculateDotGradient_(getCurrentLayer());
     update_buffer_ = true;
     update_(OPENMS_PRETTY_FUNCTION);
 
@@ -142,9 +142,9 @@ namespace OpenMS
     resetZoom();
   }
 
-  Plot3DOpenGLCanvas * Plot3DCanvas::openglwidget() const
+  Plot3DRhiCanvas * Plot3DCanvas::rhiwidget() const
   {
-    return static_cast<Plot3DOpenGLCanvas *>(openglcanvas_);
+    return rhicanvas_;
   }
 
 #ifdef DEBUG_TOPPVIEW
@@ -156,21 +156,17 @@ namespace OpenMS
   {
 #endif
 
-    // make sure OpenGL already properly initialized
-    QOpenGLContext *ctx = QOpenGLContext::currentContext();
-    if (!ctx || !ctx->isValid()) return;
-    
+    // Geometry is rebuilt inside the next frame; QRhiWidget owns when that runs.
     if (update_buffer_)
     {
       update_buffer_ = false;
       if (intensity_mode_ == PlotCanvas::IM_SNAP)
       {
-        openglwidget()->updateIntensityScale();
+        rhiwidget()->updateIntensityScale();
       }
-      openglwidget()->initializeGL();
+      rhiwidget()->markGeometryDirty();
     }
-    openglwidget()->resizeGL(width(), height());
-    openglwidget()->repaint();
+    rhiwidget()->update();
   }
 
   void Plot3DCanvas::showCurrentLayerPreferences()
@@ -203,7 +199,7 @@ namespace OpenMS
 
   void Plot3DCanvas::currentLayerParamtersChanged_()
   {
-    openglwidget()->recalculateDotGradient_(layers_.getCurrentLayer());
+    rhiwidget()->recalculateDotGradient_(layers_.getCurrentLayer());
     recalculateRanges_();
 
     update_buffer_ = true;
@@ -287,7 +283,7 @@ namespace OpenMS
     selected_peak_.clear();
     recalculateRanges_();
     resetZoom(false); // no repaint as this is done in intensityModeChange_() anyway
-    openglwidget()->recalculateDotGradient_(layers_.getLayer(i));
+    rhiwidget()->recalculateDotGradient_(layers_.getLayer(i));
     intensityModeChange_();
     modificationStatus_(i, false);
   }
@@ -306,7 +302,7 @@ namespace OpenMS
     for (Size i = 0; i < layers_.getLayerCount(); ++i)
     {
       layers_.getLayer(i).param.setValue("dot:gradient", gradient_str);
-      openglwidget()->recalculateDotGradient_(layers_.getLayer(i));
+      rhiwidget()->recalculateDotGradient_(layers_.getLayer(i));
     }
     PlotCanvas::intensityModeChange_();
   }

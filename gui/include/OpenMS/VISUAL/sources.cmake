@@ -44,7 +44,7 @@ Plot1DWidget.h
 Plot2DCanvas.h
 Plot2DWidget.h
 Plot3DCanvas.h
-Plot3DOpenGLCanvas.h
+Plot3DRhiCanvas.h
 Plot3DWidget.h
 PlotCanvas.h
 PlotWidget.h

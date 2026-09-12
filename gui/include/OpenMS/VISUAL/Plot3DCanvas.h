@@ -17,18 +17,17 @@
 
 
 class QPainter;
-class QOpenGLWidget;
 class QResizeEvent;
 
 namespace OpenMS
 {
-  class Plot3DOpenGLCanvas;
+  class Plot3DRhiCanvas;
 
   /**
     @brief Canvas for 3D-visualization of peak map data
 
-    The Plot3DCanvas uses the helper class Plot3DOpenGLCanvas for the
-    actual 3D rendering.  Deriving Plot3DCanvas directly from QGLWidget is
+    The Plot3DCanvas uses the helper class Plot3DRhiCanvas for the
+    actual 3D rendering.  Deriving Plot3DCanvas directly from QRhiWidget is
     not possible due to the "Deadly Diamond" shape of inheritance.
 
     @image html Plot3DWidget.png
@@ -42,7 +41,7 @@ namespace OpenMS
   {
     Q_OBJECT
 
-    friend class Plot3DOpenGLCanvas;
+    friend class Plot3DRhiCanvas;
 
 public:
 
@@ -58,8 +57,8 @@ public:
       SHADE_SMOOTH = 1
     };
 
-    ///returns the Plot3DOpenGLcanvas
-    Plot3DOpenGLCanvas * openglwidget() const;
+    ///returns the Plot3DRhiCanvas
+    Plot3DRhiCanvas * rhiwidget() const;
 
     ///@name Reimplemented Qt events
     //@{
@@ -70,8 +69,8 @@ public:
     bool isLegendShown() const;
     ///Shows/hides the legend
     void showLegend(bool);
-    ///pointer to the SpectrumOpenGLCanvas implementation
-    Plot3DOpenGLCanvas * openglcanvas_;
+    ///pointer to the rendering canvas implementation
+    Plot3DRhiCanvas * rhicanvas_;
 
     // docu in base class
     void showCurrentLayerPreferences() override;
@@ -101,7 +100,7 @@ protected:
     // Docu in base class
     bool finishAdding_() override;
 
-    // Reimplementation in order to update the OpenGL widget
+    // Reimplementation in order to update the rendering widget
     void update_(const char * caller_name = nullptr) override;
 
     ///whether the legend is shown or not

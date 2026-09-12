@@ -48,7 +48,7 @@
 #include <OpenMS/VISUAL/Plot2DCanvas.h>
 #include <OpenMS/VISUAL/Plot2DWidget.h>
 #include <OpenMS/VISUAL/Plot3DCanvas.h>
-#include <OpenMS/VISUAL/Plot3DOpenGLCanvas.h>
+#include <OpenMS/VISUAL/Plot3DRhiCanvas.h>
 #include <OpenMS/VISUAL/Plot3DWidget.h>
 #include <OpenMS/VISUAL/SpectraIDViewTab.h>
 #include <OpenMS/VISUAL/SpectraTreeTab.h>
@@ -2152,7 +2152,7 @@ namespace OpenMS
       }
       std::string label = "Ion Mobility [" + unit + "]";
 
-      w->canvas()->openglwidget()->setYLabel(label.c_str());
+      w->canvas()->rhiwidget()->setYLabel(label.c_str());
     }
 
     if (!w->canvas()->addPeakLayer(exp_sptr, PlotCanvas::ODExperimentSharedPtrType(new OnDiscMSExperiment()), layer.filename))

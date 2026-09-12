@@ -10,7 +10,7 @@
 
 //OpenMS
 #include <OpenMS/VISUAL/Plot3DWidget.h>
-#include <OpenMS/VISUAL/Plot3DOpenGLCanvas.h>
+#include <OpenMS/VISUAL/Plot3DRhiCanvas.h>
 #include <OpenMS/VISUAL/AxisWidget.h>
 #include <OpenMS/VISUAL/DIALOGS/Plot2DGoToDialog.h>
 

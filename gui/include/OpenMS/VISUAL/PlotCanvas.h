@@ -859,7 +859,7 @@ protected:
 
         The default implementation calls QWidget::update().
 
-        This method is reimplemented in the 3D view to update the OpenGL widget.
+        This method is reimplemented in the 3D view to update the rendering widget.
 
         @param[in] caller_name Name of the calling function (use OPENMS_PRETTY_FUNCTION).
     */
