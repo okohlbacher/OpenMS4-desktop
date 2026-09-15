@@ -12,12 +12,16 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   native:
     name: ${{ matrix.platform }} / Release
-    # Pushes and dispatches build Linux x64 on the dax runner and macOS arm64 on the
-    # Mac Studio; pull requests from forks must never run there, so they stay hosted.
-    runs-on: ${{ (github.event_name != 'pull_request' && matrix.platform == 'linux-x64' && 'dax-linux-x64') || (github.event_name != 'pull_request' && matrix.platform == 'macos-arm64' && 'studio-macos-arm64') || matrix.runner }}
+    # Existing packages use registered private runners for trusted builds.
+    # Fork PRs and new packages without registered runners use hosted machines.
+    runs-on: ${{ (github.event_name != 'pull_request' && matrix.pool) || matrix.runner }}
     timeout-minutes: 120
     strategy:
       fail-fast: false
@@ -25,22 +29,27 @@ jobs:
         include:
           - platform: linux-x64
             runner: ubuntu-24.04
+            pool: dax-linux-x64
             packages: gcc_linux-64=14 gxx_linux-64=14 coin-or-cbc=2.10.* qt6-main>=6.7 libgl-devel libegl-devel libglx-devel
             jobs: 4
           - platform: linux-arm64
             runner: ubuntu-24.04-arm
+            pool: ''
             packages: gcc_linux-aarch64=14 gxx_linux-aarch64=14 coin-or-cbc=2.10.* qt6-main>=6.7 libgl-devel libegl-devel libglx-devel
             jobs: 4
           - platform: macos-arm64
             runner: macos-15
+            pool: studio-macos-arm64
             packages: llvm-openmp coin-or-cbc=2.10.* qt6-main>=6.7
             jobs: 2
           - platform: macos-x64
             runner: macos-15-intel
+            pool: ''
             packages: llvm-openmp coin-or-cbc=2.10.* qt6-main>=6.7
             jobs: 4
           - platform: windows-x64
             runner: windows-2022
+            pool: flashbox-windows-x64
             packages: glpk=5.* qt6-main>=6.7
             jobs: 4
     env:
@@ -55,13 +64,13 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           repository: okohlbacher/OpenMS4-cli
-          ref: d5213ff3551a8608e4e3f930fd4a6f85a8c82f97
+          ref: 6f50080aa391207a0360e472921f0544f5e0bc6d
           path: dependencies/cli
           persist-credentials: false
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           repository: okohlbacher/OpenMS4-test-data
-          ref: a14ecf5d5f5de878dbaf5ddb9feafe154b02303a
+          ref: 1c24a5e0e15d866babad91557f1411bfa100dc4d
           path: dependencies/test-data
           persist-credentials: false
       - uses: mamba-org/setup-micromamba@f457c30a868e4760d3a6fcea5f25dc655b8edf39 # v3
@@ -78,8 +87,8 @@ jobs:
         shell: bash
         run: |
           mkdir -p "${{ runner.temp }}/topp"
-          gh release download topp-v1.0.0-ci.4 --repo okohlbacher/OpenMS4-topp \
-            --pattern "OpenMS4-topp-${{ matrix.platform }}-Release-c6e98a7782cc.tar.gz*" \
+          gh release download topp-v1.0.0-ci.5 --repo okohlbacher/OpenMS4-topp \
+            --pattern "OpenMS4-topp-${{ matrix.platform }}-Release-0206f6e17541.tar.gz*" \
             --dir "${{ runner.temp }}/topp"
           cd "${{ runner.temp }}/topp"
           if command -v shasum >/dev/null; then
@@ -88,12 +97,12 @@ jobs:
             tr -d '\r' < *.sha256 | sha256sum -c -
           fi
           tar -xzf *.tar.gz
-      - name: Download and verify the pinned Core SDK
+      - name: Download and verify the pinned core SDK
         shell: bash
         run: |
           mkdir -p "${{ runner.temp }}/core"
-          gh release download core-v4.0.0-ci.2 --repo okohlbacher/OpenMS4-core \
-            --pattern "OpenMS4-core-${{ matrix.platform }}-Release-bc9cc12514c7.tar.gz*" \
+          gh release download core-v4.0.0-ci.5 --repo okohlbacher/OpenMS4-core \
+            --pattern "OpenMS4-core-${{ matrix.platform }}-Release-ac41cc177023.tar.gz*" \
             --dir "${{ runner.temp }}/core"
           cd "${{ runner.temp }}/core"
           if command -v shasum >/dev/null; then
@@ -104,10 +113,11 @@ jobs:
           tar -xzf *.tar.gz
       - name: Build, test, install, and package
         env:
+          OPENMS4_SERIAL_TESTS: ${{ startsWith(runner.name, 'studio-') && '1' || '0' }}
           OPENMS4_QRHI_RENDER_TEST: ${{ startsWith(runner.name, 'studio-') && '1' || '0' }}
         run: >-
           micromamba run -n package-ci python tools/ci/run.py
-          --platform ${{ matrix.platform }} --jobs ${{ (startsWith(runner.name, 'dax') && 24) || (startsWith(runner.name, 'studio') && 8) || matrix.jobs }}
+          --platform ${{ matrix.platform }} --jobs ${{ (startsWith(runner.name, 'dax') && 24) || (startsWith(runner.name, 'studio') && 8) || (startsWith(runner.name, 'DESKTOP') && 8) || matrix.jobs }}
           --core-dir "${{ runner.temp }}/core"
           --cli-source dependencies/cli
           --topp-dir "${{ runner.temp }}/topp"

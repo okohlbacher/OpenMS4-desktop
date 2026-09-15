@@ -32,7 +32,10 @@ jobs:
             exit 1
           fi
           gh run download "$run_id" --pattern 'desktop-*' --dir artifacts
-          test "$(find artifacts -name '*.sha256' | wc -l)" -eq 5
+          # One package archive per platform; pyOpenMS adds a repaired wheel beside it, so
+          # count the archives and verify every checksum the artifacts carry.
+          test "$(find artifacts -name '*.tar.gz' | wc -l)" -eq 5
+          test "$(find artifacts -name '*.sha256' | wc -l)" -ge 5
           find artifacts -name '*.sha256' -print0 | while IFS= read -r -d '' checksum; do
             sed -i 's/\r$//' "$checksum"
             (cd "$(dirname "$checksum")" && shasum -a 256 -c "$(basename "$checksum")")
