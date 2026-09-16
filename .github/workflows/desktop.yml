@@ -49,7 +49,7 @@ jobs:
             jobs: 4
           - platform: windows-x64
             runner: windows-2022
-            pool: flashbox-windows-x64
+            pool: ''
             packages: glpk=5.* qt6-main>=6.7
             jobs: 4
     env:
