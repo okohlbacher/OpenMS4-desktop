@@ -64,13 +64,13 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           repository: okohlbacher/OpenMS4-cli
-          ref: 6f50080aa391207a0360e472921f0544f5e0bc6d
+          ref: b65ece7fd5a72b02b87cc18432d917c60b2b4282
           path: dependencies/cli
           persist-credentials: false
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           repository: okohlbacher/OpenMS4-test-data
-          ref: 1c24a5e0e15d866babad91557f1411bfa100dc4d
+          ref: 6bb571197e2c58b9cf5af1597e01a113a737c9ec
           path: dependencies/test-data
           persist-credentials: false
       - uses: mamba-org/setup-micromamba@f457c30a868e4760d3a6fcea5f25dc655b8edf39 # v3
@@ -87,8 +87,8 @@ jobs:
         shell: bash
         run: |
           mkdir -p "${{ runner.temp }}/topp"
-          gh release download topp-v1.0.0-ci.5 --repo okohlbacher/OpenMS4-topp \
-            --pattern "OpenMS4-topp-${{ matrix.platform }}-Release-0206f6e17541.tar.gz*" \
+          gh release download topp-v1.0.0-ci.6 --repo okohlbacher/OpenMS4-topp \
+            --pattern "OpenMS4-topp-${{ matrix.platform }}-Release-1e9a0a18590c.tar.gz*" \
             --dir "${{ runner.temp }}/topp"
           cd "${{ runner.temp }}/topp"
           if command -v shasum >/dev/null; then
@@ -101,8 +101,8 @@ jobs:
         shell: bash
         run: |
           mkdir -p "${{ runner.temp }}/core"
-          gh release download core-v4.0.0-ci.5 --repo okohlbacher/OpenMS4-core \
-            --pattern "OpenMS4-core-${{ matrix.platform }}-Release-ac41cc177023.tar.gz*" \
+          gh release download core-v4.0.0-ci.6 --repo okohlbacher/OpenMS4-core \
+            --pattern "OpenMS4-core-${{ matrix.platform }}-Release-84847138c0de.tar.gz*" \
             --dir "${{ runner.temp }}/core"
           cd "${{ runner.temp }}/core"
           if command -v shasum >/dev/null; then
