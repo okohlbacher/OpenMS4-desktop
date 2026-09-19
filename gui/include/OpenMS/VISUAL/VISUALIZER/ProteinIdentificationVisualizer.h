@@ -55,7 +55,7 @@ protected slots:
     void updateTree_();
 
     ///Undo the changes made in the GUI.
-    void undo_();
+    void undo_() override;
 
 protected:
 

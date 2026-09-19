@@ -46,7 +46,7 @@ public slots:
 protected slots:
 
     ///Undo the changes made in the GUI.
-    void undo_();
+    void undo_() override;
 
     /**
         @brief Updates the tree by calling MetaDataBrowser::updatePeptideHits(PeptideIdentification, int)

@@ -56,7 +56,7 @@ protected slots:
     ///Delete all data from gradient
     void deleteData_();
     ///Undo the changes made in the GUI.
-    void undo_();
+    void undo_() override;
 
 protected:
     /// Loads a list of eluent, timepoint and percentage triplets.

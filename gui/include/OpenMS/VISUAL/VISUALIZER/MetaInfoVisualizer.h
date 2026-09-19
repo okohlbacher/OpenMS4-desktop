@@ -57,7 +57,7 @@ protected slots:
     /// Removes a selected Type-Value pair from the MetaInfo Object.
     void remove_(int);
     ///Undo the changes made in the GUI.
-    void undo_();
+    void undo_() override;
 
 protected:
     /// Loads all Type-Value pairs one after another.

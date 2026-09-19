@@ -45,7 +45,7 @@ public slots:
 protected slots:
 
     ///Undo the changes made in the GUI.
-    void undo_();
+    void undo_() override;
 
 protected:
     /// The date of this experiment
