@@ -2,6 +2,12 @@
 # A package consumes installed, immutable SDKs; the suite never adds core sources.
 # Canonical source: OpenMS4-tests/cmake; sync copies with tools/sync_build_helpers.py.
 include_guard(GLOBAL)
+# Every package's CI passes -DOPENMS4_WARNINGS_AS_ERRORS=ON, but only TOPP and FLASHTnT defined it,
+# so CMake reported it as unused everywhere else and those warnings stayed warnings. Defining it here
+# makes it mean the same in every package: the compiler's own default warnings become errors. TOPP and
+# FLASHTnT additionally raise the warning level for their own targets (-Wall -Wextra, MSVC /W4).
+option(OPENMS4_WARNINGS_AS_ERRORS "Treat package compiler warnings as errors" OFF)
+set(CMAKE_COMPILE_WARNING_AS_ERROR ${OPENMS4_WARNINGS_AS_ERRORS})
 option(OPENMS4_REQUIRE_CLEAN_SOURCE "Reject uncommitted package sources in published builds" OFF)
 function(_openms4_dirty_value value label output)
   string(TOUPPER "${value}" _value)
