@@ -39,7 +39,7 @@ jobs:
             jobs: 4
           - platform: macos-arm64
             runner: macos-15
-            pool: studio-macos-arm64
+            pool: ''
             packages: llvm-openmp coin-or-cbc=2.10.* qt6-main>=6.7
             jobs: 2
           - platform: macos-x64
@@ -64,13 +64,13 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           repository: okohlbacher/OpenMS4-cli
-          ref: 53c5d97277c3c4911eb235f4d2a024f2b9709215
+          ref: 475065671c1764700c0348037858d07e1934b110
           path: dependencies/cli
           persist-credentials: false
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           repository: okohlbacher/OpenMS4-test-data
-          ref: c4fd33576dec6689818022e139c5f0f4808b74b0
+          ref: bad3c3cbf296de342d12e1e0384baa8444aa915c
           path: dependencies/test-data
           persist-credentials: false
       - uses: mamba-org/setup-micromamba@f457c30a868e4760d3a6fcea5f25dc655b8edf39 # v3
@@ -87,8 +87,8 @@ jobs:
         shell: bash
         run: |
           mkdir -p "${{ runner.temp }}/topp"
-          gh release download topp-v1.0.0-ci.8 --repo okohlbacher/OpenMS4-topp \
-            --pattern "OpenMS4-topp-${{ matrix.platform }}-Release-9f69baae3295.tar.gz*" \
+          gh release download topp-v1.0.0-ci.9 --repo okohlbacher/OpenMS4-topp \
+            --pattern "OpenMS4-topp-${{ matrix.platform }}-Release-d9969f959983.tar.gz*" \
             --dir "${{ runner.temp }}/topp"
           cd "${{ runner.temp }}/topp"
           if command -v shasum >/dev/null; then
@@ -101,8 +101,8 @@ jobs:
         shell: bash
         run: |
           mkdir -p "${{ runner.temp }}/core"
-          gh release download core-v4.0.0-ci.8 --repo okohlbacher/OpenMS4-core \
-            --pattern "OpenMS4-core-${{ matrix.platform }}-Release-7d90cec8718d.tar.gz*" \
+          gh release download core-v4.0.0-ci.9 --repo okohlbacher/OpenMS4-core \
+            --pattern "OpenMS4-core-${{ matrix.platform }}-Release-83ce20da7833.tar.gz*" \
             --dir "${{ runner.temp }}/core"
           cd "${{ runner.temp }}/core"
           if command -v shasum >/dev/null; then
